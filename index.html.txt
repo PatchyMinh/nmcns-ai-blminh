@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Skills Portfolio | Thư Pháp Học Thuật Shodō</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Noto Serif JP', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        washi: '#fdfbf7', /* Màu giấy Washi Nhật Bản */
+                        sumi: '#1a1a1a',  /* Màu mực tàu Sumi */
+                        hanko: '#9e2a2b', /* Màu đỏ dấu triện */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: #fdfbf7;
+            color: #1a1a1a;
+        }
+        .kanji-bg {
+            font-size: 20rem;
+            font-weight: 900;
+            color: rgba(26, 26, 26, 0.03);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-hanko selection:text-white antialiased">
+
+    <nav class="fixed top-0 left-0 right-0 bg-washi/90 backdrop-blur-md border-b border-sumi/10 z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="#" class="text-xl font-bold tracking-widest text-hanko flex items-center gap-2">
+                <span class="border border-hanko px-2 py-0.5 text-sm font-black">書道</span> PORTFOLIO NĂNG LỰC SỐ
+            </a>
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-bold tracking-wider uppercase text-sumi/80">
+                <a href="#intro" class="hover:text-hanko transition-colors">己 Giới Thiệu</a>
+                <a href="#task1" class="hover:text-hanko transition-colors">整 Nhiệm Vụ 1</a>
+                <a href="#task2" class="hover:text-hanko transition-colors">索 Nhiệm Vụ 2</a>
+                <a href="#task3" class="hover:text-hanko transition-colors">問 Nhiệm Vụ 3</a>
+                <a href="#task4" class="hover:text-hanko transition-colors">協 Nhiệm Vụ 4</a>
+                <a href="#task5" class="hover:text-hanko transition-colors">創 Nhiệm Vụ 5</a>
+                <a href="#task6" class="hover:text-hanko transition-colors">正 Nhiệm Vụ 6</a>
+                <a href="#reflection" class="hover:text-hanko transition-colors">省 Tổng Kết</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-24 space-y-32">
+
+        <section id="intro" class="relative pt-12 min-h-[50vh] flex flex-col justify-center">
+            <div class="absolute -top-10 -left-10 kanji-bg">己</div>
+            <div class="border-l-4 border-hanko pl-6 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-hanko uppercase block">Trang Giới Thiệu • Định Hướng Phát Triển</span>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-sumi">Hành Trình Khai Phá & Tối Ưu Năng Lực Số</h1>
+                <p class="text-base md:text-lg text-sumi/90 max-w-2xl pt-2 leading-relaxed">
+                    Xin chào, tôi là <strong>[Nhập Họ Tên Của Bạn]</strong>, sinh viên ngành <strong>[Nhập Ngành Học]</strong>. Trang Portfolio cá nhân này đại diện cho triết lý <em>Kodawari</em> – sự theo đuổi sự hoàn hảo và tận tụy trong từng chi tiết. Mục tiêu cốt lõi của dự án là hệ thống hóa toàn bộ kết quả thực hành kỹ năng số, xây dựng phương pháp luận khoa học vững chắc và thiết lập nền tảng tư duy phản biện độc lập khi tương tác với các công nghệ trí tuệ nhân tạo thế hệ mới.
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-sumi/10">
+
+        <section id="task1" class="relative">
+            <div class="absolute -top-16 right-0 kanji-bg">整</div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-hanko text-washi font-black px-3 py-1 text-xl">整</span>
+                    <h2 class="text-2xl font-bold">Nhiệm vụ 1: Máy tính và thiết bị ngoại vi — Thao tác tệp tin & thư mục</h2>
+                </div>
+                <div class="bg-white/50 border border-sumi/10 p-6 rounded-sm space-y-4">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        <strong class="text-hanko">Phân tích tư duy khoa học (Mức 4):</strong> Hệ thống lưu trữ dữ liệu được tôi thiết lập dựa trên mô hình phân cấp cấu trúc cây nghiêm ngặt (Hierarchical Tree Structure), phân định rõ ràng giữa các phân hệ dữ liệu gốc và sản phẩm lưu trữ. Quy tắc đặt tên tệp tin áp dụng nhất quán theo cú pháp định danh kết hợp mốc thời gian: <code>[MãMôn_TênNhiệmVụ_PhiênBản_NgàyTháng]</code>. Giải pháp này giúp triệt tiêu hoàn toàn sự hỗn loạn dữ liệu, tối ưu hóa tốc độ truy xuất thông tin hệ thống và đảm bảo tính toàn vẹn của tiến trình học tập lâu dài.
+                    </p>
+                    <div class="border border-sumi/10 bg-washi p-2 rounded-sm shadow-inner">
+                        <div class="aspect-[16/9] bg-gray-100 border border-dashed border-gray-300 rounded-sm flex items-center justify-center relative overflow-hidden group">
+                            <img src="anh_bai1.png" alt="Minh chứng cấu trúc thư mục" class="absolute inset-0 w-full h-full object-cover">
+                            <span class="text-xs text-gray-400 font-sans z-10 bg-washi/80 px-3 py-1.5 rounded border border-sumi/10">[Ảnh minh chứng cây thư mục: anh_bai1.png]</span>
+                        </div>
+                        <p class="text-xs text-gray-500 italic mt-2 text-center">Hình 1.1: Sơ đồ tổ chức logic và phân cấp tệp tin hệ thống</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="task2" class="relative">
+            <div class="absolute -top-16 -left-10 kanji-bg">索</div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-hanko text-washi font-black px-3 py-1 text-xl">索</span>
+                    <h2 class="text-2xl font-bold">Nhiệm vụ 2: Khai thác dữ liệu & thông tin — Tìm kiếm học thuật</h2>
+                </div>
+                <div class="bg-white/50 border border-sumi/10 p-6 rounded-sm space-y-4">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        <strong class="text-hanko">Chiến lược khai thác thông tin nâng cao (Mức 4):</strong> Quy trình nghiên cứu vận dụng tối ưu tổ hợp các toán tử tìm kiếm nâng cao bao gồm <code>site:.edu</code> để giới hạn nguồn cấp uy tín, <code>filetype:pdf</code> để định vị báo cáo khoa học, toán tử loại trừ <code>-</code> nhằm lọc tạp chất thương mại, và dấu ngoặc kép <code>""</code> để khóa định vị cụm từ khóa chính xác. Nguồn dữ liệu thu hồi được thẩm định chuyên sâu qua ma trận tiêu chí đánh giá khoa học khắt khe: Tính cập nhật, Thẩm quyền tác giả, Độ khách quan của dữ liệu và Sự minh chứng từ thực nghiệm.
+                    </p>
+                    <div class="border border-sumi/10 bg-washi p-2 rounded-sm shadow-inner">
+                        <div class="aspect-[16/9] bg-gray-100 border border-dashed border-gray-300 rounded-sm flex items-center justify-center relative overflow-hidden">
+                            <img src="anh_bai2.png" alt="Minh chứng tìm kiếm học thuật" class="absolute inset-0 w-full h-full object-cover">
+                            <span class="text-xs text-gray-400 font-sans z-10 bg-washi/80 px-3 py-1.5 rounded border border-sumi/10">[Ảnh minh chứng tìm kiếm/Bảng ma trận nguồn tin: anh_bai2.png]</span>
+                        </div>
+                        <p class="text-xs text-gray-500 italic mt-2 text-center">Hình 2.1: Giao diện lọc kết quả nâng cao và bảng đánh giá độ tin cậy tài liệu</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="task3" class="relative">
+            <div class="absolute -top-16 right-0 kanji-bg">問</div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-hanko text-washi font-black px-3 py-1 text-xl">問</span>
+                    <h2 class="text-2xl font-bold">Nhiệm vụ 3: Tổng quan về AI — Kỹ nghệ Prompt Engineering</h2>
+                </div>
+                <div class="bg-white/50 border border-sumi/10 p-6 rounded-sm space-y-4">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        <strong class="text-hanko">Phân tích cơ chế hoạt động của mô hình ngôn ngữ (Mức 4):</strong> Việc chuyển đổi tư duy từ câu lệnh đơn giản sang cấu trúc Prompt cải tiến đa tầng (áp dụng kỹ thuật <em>Few-shot Prompting</em> và khung <em>Context-Role-Task-Constraint</em>) giúp định hình chính xác không gian vector phân tích của LLMs. Cơ chế này thu hẹp phân phối xác suất từ ngữ đầu ra, giảm thiểu tối đa hiện tượng ảo tưởng (hallucination) và tối ưu hóa tài nguyên token xử lý chuyên sâu.
+                    </p>
+                    
+                    <div class="overflow-x-auto border border-sumi/10 rounded-sm bg-white">
+                        <table class="w-full text-xs text-left text-gray-700">
+                            <thead class="bg-gray-50 text-hanko font-bold border-b border-sumi/10 uppercase tracking-wider">
+                                <tr>
+                                    <th class="px-4 py-3 border-r border-sumi/10">Tiêu chí phân tích</th>
+                                    <th class="px-4 py-3 border-r border-sumi/10">Prompt Ban Đầu (Mức 1)</th>
+                                    <th class="px-4 py-3">Prompt Cải Tiến (Mức 4)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr>
+                                    <td class="px-4 py-3 font-bold border-r border-sumi/10 bg-gray-50/50">Cấu trúc câu lệnh</td>
+                                    <td class="px-4 py-3 italic text-gray-500">"[Nhập câu prompt đơn giản, sơ sài của bạn vào đây]"</td>
+                                    <td class="px-4 py-3 font-mono bg-yellow-50/20 text-sumi">"[Nhập câu lệnh thiết lập vai trò, ngữ cảnh, ví dụ và ràng buộc tại đây]"</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-bold border-r border-sumi/10 bg-gray-50/50">Đánh giá cơ chế</td>
+                                    <td class="px-4 py-3 text-red-700">Kết quả mơ hồ, thiếu chiều sâu, lặp từ và dễ bị sai lệch logic dữ liệu.</td>
+                                    <td class="px-4 py-3 text-green-800 font-medium">Phản hồi chuẩn xác, cấu trúc phân cấp rõ ràng, lập luận logic học thuật chặt chẽ.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="task4" class="relative">
+            <div class="absolute -top-16 -left-10 kanji-bg">協</div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-hanko text-washi font-black px-3 py-1 text-xl">協</span>
+                    <h2 class="text-2xl font-bold">Nhiệm vụ 4: Giao tiếp & hợp tác môi trường số — Dự án nhóm trực tuyến</h2>
+                </div>
+                <div class="bg-white/50 border border-sumi/10 p-6 rounded-sm space-y-4">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        <strong class="text-hanko">Tối ưu hóa quy trình làm việc nhóm (Mức 4):</strong> Để giải quyết triệt để sự đứt gãy thông tin khi làm việc từ xa, nhóm chúng tôi đã đồng bộ hóa quy trình công việc bất đồng bộ (Asynchronous Workflow) thông qua các tính năng nâng cao của nền tảng quản lý số. Mọi mục tiêu lớn đều được phân rã thành các cấu trúc thẻ công việc định lượng, phân định rõ ràng quyền truy cập, thời hạn thực hiện (Deadline) và thiết lập ma trận kiểm soát tiến độ thời gian thực, giúp gia tăng 150% hiệu suất cộng tác tập thể.
+                    </p>
+                    <div class="border border-sumi/10 bg-washi p-2 rounded-sm shadow-inner">
+                        <div class="aspect-[16/9] bg-gray-100 border border-dashed border-gray-300 rounded-sm flex items-center justify-center relative overflow-hidden">
+                            <img src="anh_bai4.png" alt="Minh chứng hợp tác trực tuyến" class="absolute inset-0 w-full h-full object-cover">
+                            <span class="text-xs text-gray-400 font-sans z-10 bg-washi/80 px-3 py-1.5 rounded border border-sumi/10">[Ảnh minh chứng không gian quản lý Trello/Notion nhóm: anh_bai4.png]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="task5" class="relative">
+            <div class="absolute -top-16 right-0 kanji-bg">創</div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-hanko text-washi font-black px-3 py-1 text-xl">創</span>
+                    <h2 class="text-2xl font-bold">Nhiệm vụ 5: Sáng tạo nội dung số — Ứng dụng Generative AI</h2>
+                </div>
+                <div class="bg-white/50 border border-sumi/10 p-6 rounded-sm space-y-4">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        <strong class="text-hanko">Tuyên ngôn làm chủ công nghệ tạo sinh (Mức 4):</strong> Sản phẩm nội dung truyền thông đa phương tiện dưới đây được tạo ra thông qua quy trình phối hợp chặt chẽ giữa tư duy định hướng nghệ thuật độc lập của con người và năng lực tính toán tốc độ cao của trí tuệ nhân tạo. Tôi không lạm dụng công cụ, mà ứng dụng AI đóng vai trò như một bộ tăng tốc (Catalyst) giúp chuyển đổi hóa các ý tưởng phức tạp thành sản phẩm đồ họa và văn bản có tính thẩm mỹ chuyên nghiệp cao.
+                    </p>
+                    <div class="border border-sumi/10 bg-washi p-2 rounded-sm shadow-inner">
+                        <div class="aspect-[16/9] bg-gray-100 border border-dashed border-gray-300 rounded-sm flex items-center justify-center relative overflow-hidden">
+                            <img src="anh_bai5.png" alt="Minh chứng sáng tạo nội dung số" class="absolute inset-0 w-full h-full object-cover">
+                            <span class="text-xs text-gray-400 font-sans z-10 bg-washi/80 px-3 py-1.5 rounded border border-sumi/10">[Ảnh sản phẩm số Infographic/Video/Bài viết hoàn thiện: anh_bai5.png]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="task6" class="relative">
+            <div class="absolute -top-16 -left-10 kanji-bg">正</div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-hanko text-washi font-black px-3 py-1 text-xl">正</span>
+                    <h2 class="text-2xl font-bold">Nhiệm vụ 6: An toàn & liêm chính học thuật — Đạo đức sử dụng AI</h2>
+                </div>
+                <div class="bg-white/50 border border-sumi/10 p-6 rounded-sm space-y-4">
+                    <p class="text-sm text-gray-700 leading-relaxed font-bold text-sumi">
+                        Nhằm đảm bảo tính minh bạch dữ liệu và ứng phó với các thách thức về định kiến thuật toán, tôi thiết lập bộ quy tắc ứng xử trách nhiệm cá nhân gồm 5 nguyên tắc khắt khe:
+                    </p>
+                    <ul class="space-y-3 pl-4 border-l-2 border-dashed border-hanko/40 text-xs md:text-sm text-gray-600 font-medium">
+                        <li><strong class="text-sumi">1. Liêm chính tri thức tuyệt đối:</strong> Luôn thực hiện khai báo, trích nguồn minh bạch mọi nguồn dữ liệu phụ trợ có sự đóng góp tham gia của thuật toán thông minh.</li>
+                        <li><strong class="text-sumi">2. Thẩm định độc lập (Human-in-the-loop):</strong> Không bao giờ chấp nhận trực tiếp sản phẩm thô từ AI; mọi kết quả đầu ra bắt buộc phải qua đối chiếu chéo thực nghiệm độc lập.</li>
+                        <li><strong class="text-sumi">3. Bảo mật thông tin nghiêm ngặt:</strong> Tuyệt đối không tải lên máy chủ xử lý đám mây công cộng bất kỳ thông tin nhận dạng cá nhân hoặc tài liệu học thuật mật.</li>
+                        <li><strong class="text-sumi">4. Nhận diện thiên kiến hệ thống:</strong> Chủ động phân tích, phản biện và loại bỏ các xu hướng định kiến văn hóa, xã hội tiềm ẩn trong các tập dữ liệu lớn của mô hình.</li>
+                        <li><strong class="text-sumi">5. Giữ vững vị thế trung tâm:</strong> Xác định con người luôn là hạt nhân giữ vai trò quyết định tư duy; công nghệ chỉ dừng lại ở vai trò thực thi bổ trợ.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-sumi/10">
+
+        <section id="reflection" class="relative pt-12">
+            <div class="absolute -top-12 right-0 kanji-bg">省</div>
+            <div class="bg-stone-100 border-t-4 border-hanko p-6 md:p-8 space-y-6 rounded-b-sm shadow-sm">
+                <span class="text-xs font-bold tracking-widest text-hanko uppercase block">Đánh giá bản thân • Tinh Thần Hansei Nhật Bản</span>
+                <h2 class="text-3xl font-black tracking-tight text-sumi">Sự Trưởng Thành Trong Kỷ Nguyên Số</h2>
+                <div class="text-sm md:text-base text-gray-700 space-y-4 leading-relaxed">
+                    <p>
+                        Quá trình xây dựng kiến trúc Portfolio học thuật này là một cơ hội thực hành tinh thần <strong>Hansei (Tự soi rọi lại mình)</strong> một cách toàn diện. Thách thức lớn nhất ban đầu không nằm ở rào cản kỹ thuật công nghệ, mà nằm ở việc tái cấu trúc tư duy từ thói quen lưu trữ tự phát, manh mún sang tư duy hệ thống hóa dữ liệu bài bản.
+                    </p>
+                    <p>
+                        Sự trưởng thành rõ rệt nhất là việc tôi đã thành công chuyển dịch vị thế từ một "người tiêu dùng công nghệ thụ động" thành một "nhà điều phối quy trình công nghệ chủ động". Năng lực tối ưu hóa cấu trúc thư mục, tư duy viết Prompt kỹ nghệ chuyên sâu cùng bộ lọc đạo đức học thuật khắt khe chính là những bệ phóng vững chắc nhất để tôi tiếp tục thích ứng, làm chủ mọi làn sóng đổi mới công nghệ trong tương lai.
+                    </p>
+                </div>
+                <div class="pt-4 flex justify-end">
+                    <div class="text-center font-bold text-sm">
+                        <p class="text-hanko text-base">[Nhập Tên Của Bạn]</p>
+                        <p class="text-xs text-gray-400 font-normal mt-1">Tác Giả Dự Án Portfolio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-sumi/10 py-8 text-center text-xs text-gray-400 tracking-wider font-sans">
+        © 2026 Portfolio Năng Lực Số • Designed for Level 4 Criteria • Tinh thần Kaizen kiên định.
+    </footer>
+
+</body>
+</html>
