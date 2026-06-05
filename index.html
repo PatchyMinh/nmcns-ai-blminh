@@ -1,69 +1,73 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Portfolio | Bùi Lê Minh</title>
+    <title>Digital Portfolio | Bùi Lê Minh | 己</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #059669;
-            --primary-hover: #047857;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
+            --primary: #9e2a2b;
+            --primary-light: #fef2f2;
+            --primary-hover: #7f1d1d;
+            --dark: #1a1a1a;
+            --washi: #fdfbf7;
+            --slate: #475569;
             --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light); color: var(--text); line-height: 1.6; }
-        
-        /* Navigation */
-        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { color: white; font-weight: bold; font-size: 1.2rem; text-decoration: none; }
-        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: white; font-weight: 600; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif JP', 'Segoe UI', Georgia, serif; }
+        body { background-color: var(--washi); color: var(--dark); line-height: 1.75; }
 
-        /* Container */
-        .container { max-width: 1100px; margin: 3rem auto; padding: 0 2rem; }
-        
-        /* Hero Section */
-        .hero { background: white; padding: 3rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 3rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
+        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 2rem; position: relative; }
+        .hero { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 3rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
         .hero h1 { color: var(--dark); font-size: 2.5rem; margin-bottom: 0.5rem; }
         .student-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
         .info-item span { font-weight: bold; color: var(--dark); }
 
-        /* Grid Tasks */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: white; padding: 2rem; border-radius: 8px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; position: relative; z-index: 1; }
+        .card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .card h3 { color: var(--dark); margin-bottom: 1rem; font-size: 1.25rem; }
+        .card h3 { color: var(--dark); margin-bottom: 1rem; font-size: 1.25rem; border-left: 3px solid var(--primary); padding-left: 0.75rem; }
         .card p { font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem; }
         .btn { display: inline-block; background: var(--primary); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-weight: 600; text-align: center; transition: background 0.2s; }
         .btn:hover { background: var(--primary-hover); }
-        
-        footer { text-align: center; margin-top: 5rem; padding: 2rem; color: #64748b; border-top: 1px solid var(--border); }
+
+        .kanji-bg { position: fixed; bottom: 2rem; left: 2rem; font-size: 20rem; font-weight: 900; color: rgba(158, 42, 43, 0.03); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
+        footer { text-align: center; margin-top: 5rem; padding: 2rem; color: #64748b; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 0.75rem; }
+            .nav-links a { margin: 0 0.5rem; }
+            .container { margin: 1.5rem auto; padding: 0 1rem; }
+            .hero { padding: 1.75rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .kanji-bg { font-size: 10rem; bottom: 1rem; left: 1rem; }
+        }
     </style>
 </head>
 <body>
-
+    <div class="kanji-bg">己</div>
     <nav class="navbar">
-        <a href="index.html" class="nav-logo">BLM • PORTFOLIO</a>
+        <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
         <div class="nav-links">
-            <a href="index.html" class="active">Giới thiệu</a>
-            <a href="bai1.html">Bài 1 (Thao tác)</a>
-            <a href="bai2.html">Bài 2 (Tìm kiếm)</a>
-            <a href="bai3.html">Bài 3 (Prompt)</a>
-            <a href="bai4.html">Bài 4 (Hợp tác)</a>
-            <a href="bai5.html">Bài 5 (Sáng tạo)</a>
-            <a href="bai6.html">Bài 6 (Đạo đức)</a>
-            <a href="tongket.html">Tổng kết</a>
+            <a href="index.html" class="active">己 紹介</a>
+            <a href="bai1.html">整 1</a><a href="bai2.html">索 2</a><a href="bai3.html">問 3</a>
+            <a href="bai4.html">協 4</a><a href="bai5.html">創 5</a><a href="bai6.html">正 6</a>
+            <a href="tongket.html">省 総括</a>
         </div>
     </nav>
-
     <div class="container">
         <section class="hero">
             <h1>Bùi Lê Minh</h1>
             <p style="color: var(--primary); font-weight: 600; font-size: 1.1rem;">Digital Portfolio — Nhập môn Công nghệ số và Trí tuệ nhân tạo</p>
-            <p style="margin-top: 1rem;">Chào mừng đến với trang lưu trữ sản phẩm học tập cá nhân. Website này hệ thống hóa toàn bộ các nhiệm vụ từ Bài 1 đến Bài 6, tập trung vào các kỹ năng: quản lý tệp tin, tìm kiếm học thuật, viết prompt, hợp tác trực tuyến, sáng tạo nội dung với AI và đạo đức sử dụng AI.</p>
+            <p style="margin-top: 1rem;">Chào mừng đến với không gian triển lãm năng lực số cá nhân. Website này được xây dựng dựa trên triết lý <strong>Kodawari</strong> (こだわり) – sự tận tụy và theo đuổi sự hoàn thiện trong từng chi tiết nhỏ nhất, kết hợp với tinh thần <strong>Kaizen</strong> (改善) – cải tiến liên tục. Toàn bộ các nhiệm vụ từ Bài 1 đến Bài 6 được hệ thống hóa nhằm phản ánh quá trình trưởng thành trong việc làm chủ công nghệ số một cách có trách nhiệm.</p>
             <div class="student-info">
                 <div class="info-item"><span>MSSV:</span> 25021868</div>
                 <div class="info-item"><span>Lớp:</span> K70I-CS4</div>
@@ -71,21 +75,18 @@
             </div>
         </section>
 
-        <h2 style="margin-bottom: 1.5rem; color: var(--dark);">Danh sách Nhiệm vụ</h2>
-        
+        <h2 style="margin-bottom: 1.5rem; color: var(--dark); border-left: 4px solid var(--primary); padding-left: 0.75rem;">六つの課題 — Sáu Nhiệm vụ cốt lõi</h2>
         <div class="grid">
-            <div class="card"><div><h3>Bài 1: Thao tác tệp tin & thư mục</h3><p>Cấu trúc thư mục phân cấp, quy tắc đặt tên chuẩn hóa, triết lý 3-Click Rule và đồng bộ đám mây.</p></div><a href="bai1.html" class="btn">Xem bài làm</a></div>
-            <div class="card"><div><h3>Bài 2: Tìm kiếm & đánh giá thông tin học thuật</h3><p>Áp dụng toán tử Boolean, ma trận đánh giá nguồn tin, chủ đề: Suy luận Bayes trong AI y khoa.</p></div><a href="bai2.html" class="btn">Xem bài làm</a></div>
-            <div class="card"><div><h3>Bài 3: Kỹ nghệ viết Prompt</h3><p>So sánh prompt cơ bản vs nâng cao, khung CREATE, phân tích hiệu quả qua ví dụ tóm tắt LLM.</p></div><a href="bai3.html" class="btn">Xem bài làm</a></div>
-            <div class="card"><div><h3>Bài 4: Công cụ hợp tác trực tuyến</h3><p>Vai trò trưởng nhóm, sử dụng Microsoft Planner, Teams, Google Docs, Drive và giải quyết thách thức.</p></div><a href="bai4.html" class="btn">Xem bài làm</a></div>
-            <div class="card"><div><h3>Bài 5: Sáng tạo nội dung với AI</h3><p>Chiến dịch "Hà Nội - Hành trình Xanh 2026", kết hợp Gemini, Nano Banana, Canva, quy trình đồng sáng tạo.</p></div><a href="bai5.html" class="btn">Xem bài làm</a></div>
-            <div class="card"><div><h3>Bài 6: Đạo đức AI & Liêm chính học thuật</h3><p>Chính sách của ĐHQGHN/UET, bộ 6 nguyên tắc cá nhân, phân tích ranh giới hỗ trợ hợp lý và gian lận.</p></div><a href="bai6.html" class="btn">Xem bài làm</a></div>
+            <div class="card"><div><h3>整 1 · Thao tác tệp tin & thư mục</h3><p>Kiến trúc thông tin phân cấp, quy tắc đặt tên chuẩn hóa, triết lý 3-Click Rule và đồng bộ đám mây.</p></div><a href="bai1.html" class="btn">Xem →</a></div>
+            <div class="card"><div><h3>索 2 · Tìm kiếm & đánh giá học thuật</h3><p>Áp dụng toán tử Boolean, ma trận đánh giá nguồn tin, chủ đề: Suy luận Bayes trong AI y khoa.</p></div><a href="bai2.html" class="btn">Xem →</a></div>
+            <div class="card"><div><h3>問 3 · Kỹ nghệ viết Prompt</h3><p>So sánh prompt cơ bản vs nâng cao, khung CREATE, phân tích hiệu quả qua ví dụ tóm tắt LLM.</p></div><a href="bai3.html" class="btn">Xem →</a></div>
+            <div class="card"><div><h3>協 4 · Công cụ hợp tác trực tuyến</h3><p>Vai trò trưởng nhóm, sử dụng Microsoft Planner, Teams, Google Docs, Drive và giải quyết thách thức.</p></div><a href="bai4.html" class="btn">Xem →</a></div>
+            <div class="card"><div><h3>創 5 · Sáng tạo nội dung với AI</h3><p>Chiến dịch "Hà Nội - Hành trình Xanh 2026", kết hợp Gemini, Nano Banana, Canva, quy trình đồng sáng tạo.</p></div><a href="bai5.html" class="btn">Xem →</a></div>
+            <div class="card"><div><h3>正 6 · Đạo đức AI & Liêm chính học thuật</h3><p>Chính sách của ĐHQGHN/UET, bộ 6 nguyên tắc cá nhân, phân tích ranh giới hỗ trợ hợp lý và gian lận.</p></div><a href="bai6.html" class="btn">Xem →</a></div>
         </div>
     </div>
-
     <footer>
-        <p>© 2026 Bùi Lê Minh - UET. Sản phẩm phục vụ học tập học phần VNU1001.</p>
+        <p>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</p>
     </footer>
-
 </body>
 </html>

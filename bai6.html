@@ -1,158 +1,116 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài 6 | Đạo đức AI & Liêm chính học thuật</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #059669;
-            --primary-light: #f0fdf4;
-            --primary-hover: #047857;
-            --dark: #0f172a;
+            --primary: #9e2a2b;
+            --primary-light: #fef2f2;
+            --primary-hover: #7f1d1d;
+            --dark: #1a1a1a;
+            --washi: #fdfbf7;
             --slate: #475569;
-            --light: #f8fafc;
             --border: #e2e8f0;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif JP', 'Segoe UI', Georgia, serif; }
+        body { background-color: var(--washi); color: var(--dark); line-height: 1.75; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--light); color: #334155; line-height: 1.75; }
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
+        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
 
-        /* Navbar */
-        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .nav-logo { color: white; font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: 0.5px; }
-        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
-        .nav-links a:hover, .nav-links a.active { color: white; font-weight: 600; }
-
-        /* Container & Header */
-        .container { max-width: 960px; margin: 3rem auto; padding: 0 1.5rem; }
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
         .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; overflow: hidden; }
         .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
-        .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; }
+        .report-header h1 { color: var(--dark); font-size: 1.8rem; line-height: 1.3; margin-bottom: 1.5rem; }
         .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
-        .meta-item span { font-weight: 600; color: var(--dark); }
-
-        /* Sections */
-        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; }
-        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; }
+        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
+        .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
         h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; }
-        p { margin-bottom: 1.2rem; text-align: justify; color: #475569; }
-        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #475569; }
-        li { margin-bottom: 0.5rem; }
-        strong { color: var(--dark); }
-
-        /* Khung hiển thị cấu trúc Prompt AI */
-        .prompt-container { background-color: #f8fafc; border-left: 4px solid #0284c7; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; }
+        p, ul, ol { position: relative; z-index: 1; }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        .prompt-container { background-color: #f8fafc; border-left: 4px solid #0284c7; padding: 1.25rem; margin: 1.5rem 0; border-radius: 8px; }
         .prompt-title { font-weight: 700; color: #0369a1; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; }
-
-        .image-wrapper { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; }
-        .image-wrapper img { max-width: 100%; height: auto; border-radius: 6px; }
-
         .rules-list { list-style: none; padding-left: 0; }
         .rules-list li { position: relative; padding-left: 2rem; margin-bottom: 1rem; }
         .rules-list li::before { content: "✓"; position: absolute; left: 0; top: 2px; width: 1.25rem; height: 1.25rem; background-color: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; }
-
-        .infographic-container { text-align: center; margin: 2.5rem 0; }
-        .infographic-container img { max-width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--border); }
-
+        .infographic-container { text-align: center; margin: 2rem 0; }
+        .infographic-container img { max-width: 100%; border-radius: 16px; border: 1px solid var(--border); }
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
-
         @media (max-width: 768px) {
-            .navbar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
+            .navbar { flex-direction: column; gap: 0.75rem; }
             .nav-links a { margin: 0 0.5rem; }
             .container { margin: 1.5rem auto; }
             .report-header, .content-section { padding: 1.75rem; }
-            .report-header h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
-
     <nav class="navbar">
-        <a href="index.html" class="nav-logo">BÙI LÊ MINH • PORTFOLIO</a>
+        <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
         <div class="nav-links">
-            <a href="index.html">Giới thiệu</a>
-            <a href="bai1.html">Bài 1 (Thao tác)</a>
-            <a href="bai2.html">Bài 2 (Tìm kiếm)</a>
-            <a href="bai3.html">Bài 3 (Prompt)</a>
-            <a href="bai4.html">Bài 4 (Hợp tác)</a>
-            <a href="bai5.html">Bài 5 (Sáng tạo)</a>
-            <a href="bai6.html" class="active">Bài 6 (Đạo đức)</a>
-            <a href="tongket.html">Tổng kết</a>
+            <a href="index.html">己 紹介</a><a href="bai1.html">整 1</a><a href="bai2.html">索 2</a>
+            <a href="bai3.html">問 3</a><a href="bai4.html">協 4</a><a href="bai5.html">創 5</a>
+            <a href="bai6.html" class="active">正 6</a><a href="tongket.html">省 総括</a>
         </div>
     </nav>
-
     <div class="container">
-        
         <header class="report-header">
             <h1>BÁO CÁO: PHÁT TRIỂN KỸ NĂNG SỬ DỤNG AI CÓ TRÁCH NHIỆM VÀ ĐẠO ĐỨC TRONG HỌC TẬP</h1>
             <div class="meta-grid">
-                <div class="meta-item"><span>Người thực hiện:</span> Bùi Lê Minh</div>
-                <div class="meta-item"><span>MSSV:</span> 25021868</div>
-                <div class="meta-item"><span>Lớp:</span> K70I-CS4</div>
-                <div class="meta-item"><span>Mã học phần:</span> VNU1001_E252012</div>
+                <div><span>Người thực hiện:</span> Bùi Lê Minh</div><div><span>MSSV:</span> 25021868</div>
+                <div><span>Lớp:</span> K70I-CS4</div><div><span>Mã HP:</span> VNU1001_E252012</div>
             </div>
         </header>
 
         <section class="content-section">
-            <h2>I. Nghiên cứu chính sách của ĐHQGHN & UET về AI</h2>
-            <p>Trong giai đoạn 2024-2026, ĐHQGHN đã xác định AI là công cụ chiến lược, đưa học phần VNU1001 vào chương trình bắt buộc. Tại UET, các quy định về AI được lồng ghép trong quy chế đào tạo và liêm chính học thuật:</p>
-            <ul>
-                <li><strong>Nguyên tắc minh bạch:</strong> Sinh viên được phép sử dụng AI nhưng phải khai báo rõ ràng trong danh mục tài liệu tham khảo.</li>
-                <li><strong>Trách nhiệm nội dung:</strong> Người học là thực thể duy nhất chịu trách nhiệm về tính chính xác và nguyên bản của sản phẩm nộp về.</li>
-                <li><strong>Liêm chính trong kiểm tra, đánh giá:</strong> Nghiêm cấm sử dụng AI trực tiếp để tạo ra sản phẩm cuối cùng mà không có sự tham gia của tư duy cá nhân.</li>
-            </ul>
+            <div class="kanji-bg">正</div>
+            <h2>I. 正 — Nghiên cứu chính sách của ĐHQGHN & UET về AI</h2>
+            <p>ĐHQGHN đưa học phần VNU1001 vào chương trình bắt buộc. UET quy định: <strong>minh bạch</strong> (khai báo hỗ trợ AI), <strong>trách nhiệm nội dung</strong> (người học chịu trách nhiệm về tính chính xác), <strong>liêm chính</strong> (nghiêm cấm copy-paste kết quả AI không hiểu bản chất).</p>
         </section>
 
         <section class="content-section">
-            <h2>II. Thực thi nhiệm vụ học tập với sự hỗ trợ của AI</h2>
-            <div class="prompt-container">
-                <div class="prompt-title">📌 Prompt 1: Thu thập dàn ý</div>
-                <div>"Tôi là sinh viên năm nhất ngành CNTT tại UET. Hãy lập cho tôi một dàn ý chi tiết để tổng hợp tài liệu về chủ đề 'Máy tính và các thiết bị ngoại vi'."</div>
-            </div>
-            <div class="prompt-container">
-                <div class="prompt-title">📌 Prompt 2: Đào sâu chuyên môn</div>
-                <div>"Dựa trên dàn ý trên, hãy viết chi tiết phần 'Thiết bị ngoại vi'. Nêu rõ chức năng, thông số kỹ thuật và xu hướng công nghệ mới."</div>
-            </div>
-            <div class="prompt-container">
-                <div class="prompt-title">📌 Prompt 3: Kiểm tra và định dạng</div>
-                <div>"Hãy tổng hợp lại thông tin vào một bảng so sánh Markdown gồm các cột: Tên thiết bị, Phân loại, Thông số quan trọng, Lưu ý khi sử dụng."</div>
-            </div>
-            <p><strong>Kết quả & chỉnh sửa:</strong> AI đã cung cấp thông số chuyên sâu (DPI, Refresh Rate...). Tôi đã phát hiện AI liệt kê chuẩn VGA cũ và thay thế bằng HDMI 2.1, DisplayPort 1.4. Toàn bộ nội dung được kiểm chứng thủ công.</p>
+            <div class="kanji-bg">実</div>
+            <h2>II. Thực thi nhiệm vụ với sự hỗ trợ của AI</h2>
+            <div class="prompt-container"><div class="prompt-title">📌 Prompt 1 (Khởi tạo)</div>"Tôi là sinh viên năm nhất CNTT tại UET. Lập dàn ý chi tiết về 'Máy tính và thiết bị ngoại vi'."</div>
+            <div class="prompt-container"><div class="prompt-title">📌 Prompt 2 (Chi tiết hóa)</div>"Viết chi tiết phần thiết bị ngoại vi: chức năng, thông số kỹ thuật (DPI, Refresh Rate...), xu hướng mới."</div>
+            <div class="prompt-container"><div class="prompt-title">📌 Prompt 3 (Định dạng)</div>"Tổng hợp vào bảng Markdown: Tên thiết bị, Phân loại, Thông số, Lưu ý."</div>
+            <p><strong>Kết quả & chỉnh sửa:</strong> AI cung cấp thông số chuyên sâu. Tôi phát hiện chuẩn VGA cũ → thay bằng HDMI 2.1, DisplayPort 1.4. Toàn bộ nội dung được kiểm chứng thủ công.</p>
         </section>
 
         <section class="content-section">
-            <h2>III. Phân tích các vấn đề đạo đức học thuật</h2>
-            <p><strong>Ranh giới giữa hỗ trợ hợp lý và gian lận:</strong> Hỗ trợ hợp lý là dùng AI để giải thích code, gợi ý cấu trúc; gian lận là yêu cầu AI làm toàn bộ bài tập và nộp mà không hiểu nội dung.</p>
-            <p><strong>Quyền sở hữu trí tuệ và trích dẫn:</strong> Việc không trích dẫn nguồn AI có thể bị coi là đạo văn kỹ thuật số. Cần phân định rõ "ý tưởng của máy" và "sáng tạo của người".</p>
-            <p><strong>Tác động đến học tập:</strong> AI giúp tiếp cận công nghệ mới nhanh, nhưng nếu lệ thuộc sẽ mất khả năng giải quyết vấn đề độc lập.</p>
+            <div class="kanji-bg">倫</div>
+            <h2>III. Phân tích vấn đề đạo đức học thuật</h2>
+            <p><strong>Ranh giới hỗ trợ hợp lý – gian lận:</strong> Hỗ trợ = AI giải thích, gợi ý; Gian lận = yêu cầu AI làm toàn bộ bài tập và nộp mà không hiểu.</p>
+            <p><strong>Quyền sở hữu trí tuệ:</strong> Không trích dẫn AI có thể bị coi là đạo văn kỹ thuật số. Cần phân định rõ phần "ý tưởng của máy" và "sáng tạo của người".</p>
+            <p><strong>Tác động đến học tập:</strong> AI giúp tiếp cận công nghệ mới nhanh, nhưng lệ thuộc quá mức sẽ mất khả năng giải quyết vấn đề độc lập.</p>
         </section>
 
         <section class="content-section">
-            <h2>IV. Bộ nguyên tắc cá nhân khi sử dụng AI</h2>
+            <div class="kanji-bg">則</div>
+            <h2>IV. Bộ nguyên tắc cá nhân (6 điều)</h2>
             <ul class="rules-list">
-                <li><strong>Minh bạch tuyệt đối:</strong> Luôn khai báo các phần có sự hỗ trợ của AI trong mọi bài nộp.</li>
-                <li><strong>Kiểm chứng kép:</strong> Mọi dữ liệu, thông số kỹ thuật hoặc đoạn mã do AI cung cấp đều phải được kiểm tra lại từ nguồn tin cậy.</li>
-                <li><strong>Công cụ, không phải thay thế:</strong> Chỉ dùng AI để gợi ý ý tưởng hoặc tối ưu hóa quy trình, không dùng AI để làm thay bài tập.</li>
-                <li><strong>Bảo mật dữ liệu:</strong> Không đưa thông tin cá nhân, tài khoản hoặc mã nguồn quan trọng lên AI công cộng.</li>
-                <li><strong>Tư duy phản biện:</strong> Luôn đặt câu hỏi ngược lại với câu trả lời của AI để tránh bị dẫn dắt bởi thông tin sai lệch.</li>
-                <li><strong>Cập nhật liên tục:</strong> Theo sát các thông báo mới từ nhà trường về quy định sử dụng công nghệ.</li>
+                <li><strong>Minh bạch tuyệt đối:</strong> Khai báo mọi hỗ trợ AI trong bài nộp.</li>
+                <li><strong>Kiểm chứng kép:</strong> Đối chiếu dữ liệu AI với nguồn tin cậy.</li>
+                <li><strong>Công cụ, không phải thay thế:</strong> Không dùng AI làm thay bài tập về nhà.</li>
+                <li><strong>Bảo mật dữ liệu:</strong> Không đưa thông tin cá nhân/mã nguồn quan trọng lên AI công cộng.</li>
+                <li><strong>Tư duy phản biện:</strong> Đặt câu hỏi ngược với câu trả lời của AI để tránh hallucination.</li>
+                <li><strong>Cập nhật liên tục:</strong> Theo dõi quy định mới của nhà trường về công nghệ.</li>
             </ul>
         </section>
 
         <section class="content-section">
+            <div class="kanji-bg">画</div>
             <h2>V. Infographic "Sử dụng AI có trách nhiệm trong học thuật"</h2>
-            <div class="infographic-container">
-                <img src="infographic.png" alt="Infographic Sử dụng AI có trách nhiệm" onerror="this.src='https://via.placeholder.com/800x1000.png?text=Infographic'">
-            </div>
+            <div class="infographic-container"><img src="infographic.png" alt="Infographic" onerror="this.src='https://via.placeholder.com/800x1000.png'"></div>
         </section>
-
     </div>
-
-    <footer>
-        <p>© 2026 Bùi Lê Minh - MSSV: 25021868. Bản quyền Portfolio thuộc học phần VNU1001.</p>
-    </footer>
-
+    <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>
 </body>
 </html>

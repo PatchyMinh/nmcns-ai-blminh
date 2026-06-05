@@ -1,170 +1,113 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài 5 | Sáng tạo nội dung số với AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* GIỮ NGUYÊN BỘ CSS CHUẨN CỦA TRANG WEB */
         :root {
-            --primary: #059669;
-            --primary-light: #f0fdf4;
-            --primary-hover: #047857;
-            --dark: #0f172a;
+            --primary: #9e2a2b;
+            --primary-light: #fef2f2;
+            --primary-hover: #7f1d1d;
+            --dark: #1a1a1a;
+            --washi: #fdfbf7;
             --slate: #475569;
-            --light: #f8fafc;
             --border: #e2e8f0;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif JP', 'Segoe UI', Georgia, serif; }
+        body { background-color: var(--washi); color: var(--dark); line-height: 1.75; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--light); color: #334155; line-height: 1.75; }
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
+        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
 
-        /* Navbar */
-        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .nav-logo { color: white; font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: 0.5px; }
-        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
-        .nav-links a:hover, .nav-links a.active { color: white; font-weight: 600; }
-
-        /* Container & Header */
-        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
         .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; overflow: hidden; }
         .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
-        .report-header h1 { color: var(--dark); font-size: 2.2rem; line-height: 1.3; margin-bottom: 1.5rem; }
+        .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; }
         .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
-        .meta-item span { font-weight: 600; color: var(--dark); }
-
-        /* Sections */
-        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; }
-        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; }
-        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; }
-        p { margin-bottom: 1.2rem; text-align: justify; color: #475569; }
-        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #475569; }
-        li { margin-bottom: 0.5rem; }
-        strong { color: var(--dark); }
-
-        /* Khung Công cụ AI */
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
+        .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
+        p, ul, ol { position: relative; z-index: 1; }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; position: relative; z-index: 1; }
         .tool-card { background: #f8fafc; border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; transition: transform 0.2s; }
-        .tool-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-        .tool-card h4 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .tool-card p { font-size: 0.9rem; margin-bottom: 0; }
-
-        /* Không gian trưng bày (Gallery) */
+        .tool-card:hover { transform: translateY(-5px); }
         .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .gallery-item { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; }
         .gallery-item.full-width { grid-column: 1 / -1; }
-        .gallery-item img { max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-        .gallery-item img:hover { transform: scale(1.02); }
-        .image-caption { font-size: 0.9rem; color: var(--slate); margin-top: 1rem; font-weight: 500; }
-
-        /* Blockquote Đạo đức */
-        .ethics-box { background-color: #fff1f2; border-left: 4px solid #e11d48; padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; color: #881337; }
-
+        .gallery-item img { max-width: 100%; border-radius: 6px; }
+        .image-caption { font-size: 0.85rem; margin-top: 0.75rem; font-style: italic; color: var(--slate); }
+        .ethics-box { background-color: #fff1f2; border-left: 4px solid var(--primary); padding: 1.5rem; margin: 1.5rem 0; color: #881337; }
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
-
         @media (max-width: 768px) {
-            .navbar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
+            .navbar { flex-direction: column; gap: 0.75rem; }
             .nav-links a { margin: 0 0.5rem; }
-            .container { margin: 1.5rem auto; }
-            .report-header, .content-section { padding: 1.75rem; }
-            .report-header h1 { font-size: 1.6rem; }
             .gallery-grid { grid-template-columns: 1fr; }
+            .container { margin: 1.5rem auto; }
         }
     </style>
 </head>
 <body>
-
     <nav class="navbar">
-        <a href="index.html" class="nav-logo">BÙI LÊ MINH • PORTFOLIO</a>
+        <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
         <div class="nav-links">
-            <a href="index.html">Giới thiệu</a>
-            <a href="bai1.html">Bài 1 (Đạo đức AI)</a>
-            <a href="bai2.html">Bài 2 (Nghiên cứu)</a>
-            <a href="bai4.html">Bài 4 (Hợp tác số)</a>
-            <a href="bai5.html" class="active">Bài 5 (Sáng tạo AI)</a>
+            <a href="index.html">己 紹介</a><a href="bai1.html">整 1</a><a href="bai2.html">索 2</a>
+            <a href="bai3.html">問 3</a><a href="bai4.html">協 4</a>
+            <a href="bai5.html" class="active">創 5</a><a href="bai6.html">正 6</a><a href="tongket.html">省 総括</a>
         </div>
     </nav>
-
     <div class="container">
-        
         <header class="report-header">
             <h1>BÁO CÁO DỰ ÁN: SÁNG TẠO NỘI DUNG SỐ VỚI CÔNG CỤ TRÍ TUỆ NHÂN TẠO</h1>
             <div class="meta-grid">
-                <div class="meta-item"><span>Sinh viên:</span> Bùi Lê Minh</div>
-                <div class="meta-item"><span>MSSV:</span> 25021868</div>
-                <div class="meta-item"><span>Chiến dịch:</span> Hà Nội - Hành trình Xanh 2026</div>
-                <div class="meta-item"><span>Ngày thực hiện:</span> 01/05/2026</div>
+                <div><span>Sinh viên:</span> Bùi Lê Minh</div><div><span>MSSV:</span> 25021868</div>
+                <div><span>Chiến dịch:</span> Hà Nội - Hành trình Xanh 2026</div><div><span>Ngày:</span> 01/05/2026</div>
             </div>
         </header>
 
         <section class="content-section">
-            <h2>I. Giới thiệu Dự án Truyền thông</h2>
-            <p><strong>Mục tiêu:</strong> Tạo ra bộ nội dung đa phương tiện nhằm lan tỏa thông điệp khuyến khích du lịch bền vững và giảm thiểu rác thải nhựa tại không gian văn hóa thủ đô Hà Nội.</p>
-            <p><strong>Sản phẩm đầu ra:</strong> Một bài viết chuyên sâu trên Blog du lịch kèm theo 02 Poster truyền thông chất lượng cao (Key Visuals).</p>
+            <div class="kanji-bg">創</div>
+            <h2>I. 創 — Giới thiệu Dự án Truyền thông</h2>
+            <p><strong>Mục tiêu:</strong> Lan tỏa thông điệp du lịch bền vững, giảm rác thải nhựa tại Hà Nội. <strong>Sản phẩm:</strong> 01 bài blog chuyên sâu + 02 Poster truyền thông.</p>
+        </section>
 
-            <h2 style="margin-top: 3rem;">II. Hệ sinh thái Công cụ AI tạo sinh (Generative AI)</h2>
-            <p>Để tối ưu hóa thời gian sản xuất nhưng vẫn đảm bảo tính độc bản, tôi đã phối hợp một chuỗi quy trình làm việc (Workflow) liên hoàn giữa 3 công cụ AI hàng đầu:</p>
-            
+        <section class="content-section">
+            <div class="kanji-bg">具</div>
+            <h2>II. Hệ sinh thái Công cụ AI tạo sinh</h2>
             <div class="tools-grid">
-                <div class="tool-card">
-                    <h4>📝 Google Gemini</h4>
-                    <p><strong>AI Tạo văn bản:</strong> Đóng vai trò là trợ lý kịch bản. Sử dụng để phân tích từ khóa, lên dàn ý chi tiết và hỗ trợ hành văn cho bài viết Blog.</p>
-                </div>
-                <div class="tool-card">
-                    <h4>🎨 Nano Banana</h4>
-                    <p><strong>AI Tạo hình ảnh:</strong> Trình tạo ảnh từ văn bản (Text-to-Image). Cung cấp nguyên liệu hình ảnh thị giác mang tính nghệ thuật cao và đúng với ý đồ kịch bản.</p>
-                </div>
-                <div class="tool-card">
-                    <h4>✨ Canva Magic Design</h4>
-                    <p><strong>AI Trợ lý Thiết kế:</strong> Tự động hóa việc nhận diện bảng màu (Color Palette), sắp xếp bố cục chữ (Typography) để hoàn thiện Poster cuối cùng.</p>
-                </div>
+                <div class="tool-card"><h4>📝 Google Gemini</h4><p>Lên ý tưởng, dàn ý, viết bản thảo blog.</p></div>
+                <div class="tool-card"><h4>🎨 Nano Banana</h4><p>Tạo hình ảnh photorealistic (Text-to-Image).</p></div>
+                <div class="tool-card"><h4>✨ Canva Magic Design</h4><p>Nhận diện màu sắc, bố cục, typography.</p></div>
             </div>
         </section>
 
         <section class="content-section">
+            <div class="kanji-bg">人</div>
             <h2>III. Quy trình Đồng sáng tạo (Human-AI Collaboration)</h2>
-            <p>Sự thành công của dự án nằm ở việc <strong>Con người giữ vai trò Chỉ đạo nghệ thuật (Art Direction)</strong> thay vì phó mặc cho AI. Đóng góp cá nhân của tôi chiếm <strong>hơn 60%</strong> toàn bộ dự án, thể hiện qua các điểm chạm sau:</p>
-            
+            <p><strong>Đóng góp cá nhân (>60%):</strong></p>
             <ul>
-                <li><strong>Thiết lập Tham số Hình ảnh:</strong> Thay vì dùng các Prompt cơ bản, tôi đã tinh chỉnh thông số chi tiết trên Nano Banana (vd: <em>"35mm film, warm tones, cinematic lighting"</em>) để ép AI xuất ra bộ ảnh mang phong cách "Hà Nội hoài cổ" đồng nhất.</li>
-                <li><strong>Kiểm chứng Dữ liệu (Fact-checking):</strong> Toàn bộ dữ liệu địa lý, văn hóa và lịch sử Hà Nội do Gemini sinh ra đều được đối soát thủ công khắt khe nhằm loại trừ hoàn toàn hiện tượng <em>"Ảo giác AI" (Hallucination)</em>.</li>
-                <li><strong>Cá nhân hóa Bố cục:</strong> Trải nghiệm UX/UI của bài Blog, nhịp độ ngắt câu và vị trí đặt Poster hoàn toàn do tư duy thiết kế của con người quyết định.</li>
+                <li><strong>Tham số hình ảnh:</strong> Prompt chi tiết (<em>35mm film, warm tones, cinematic lighting</em>) tạo phong cách "Hà Nội hoài cổ".</li>
+                <li><strong>Kiểm chứng dữ liệu:</strong> Đối soát thủ công thông tin địa lý, văn hóa, loại trừ hallucination.</li>
+                <li><strong>Chỉ đạo nghệ thuật:</strong> Bố cục, nhịp độ bài viết, vị trí đặt poster hoàn toàn do con người quyết định.</li>
             </ul>
-
-            <div class="ethics-box">
-                <strong>🛡️ Cam kết Đạo đức Nghề nghiệp:</strong><br>
-                Mặc dù công cụ AI có khả năng tạo ra hình ảnh photorealistic (chân thực như ảnh chụp), tôi tuân thủ tuyệt đối quy tắc minh bạch bằng cách <strong>gắn nhãn rõ ràng: "Hình ảnh minh họa trong bài được tạo bởi AI"</strong> trên mọi sản phẩm. Việc này đảm bảo tính liêm chính, không gây hiểu lầm cho độc giả rằng đây là các bức ảnh phóng sự thực tế.
-            </div>
+            <div class="ethics-box"><strong>🛡️ Cam kết Đạo đức:</strong> Mọi hình ảnh AI sinh ra đều gắn nhãn: <em>"Hình ảnh minh họa được tạo bởi AI"</em> để đảm bảo minh bạch, không gây hiểu lầm.</div>
         </section>
 
         <section class="content-section">
-            <h2>IV. Không gian Trưng bày Sản phẩm Truyền thông</h2>
-            <p>Dưới đây là các ấn phẩm đã được hoàn thiện thông qua quy trình tinh chỉnh đa bước giữa tư duy cá nhân và công nghệ Trí tuệ nhân tạo.</p>
-
+            <div class="kanji-bg">美</div>
+            <h2>IV. Không gian Trưng bày Sản phẩm</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="hinh_bai5_poster1.png" alt="Poster Hà Nội Hành Trình Xanh 1" onerror="this.src='https://via.placeholder.com/600x800.png?text=Placeholder+Poster+1'">
-                    <div class="image-caption">Ấn phẩm Poster 01: Concept "Góc phố Xanh"</div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="hinh_bai5_poster2.png" alt="Poster Hà Nội Hành Trình Xanh 2" onerror="this.src='https://via.placeholder.com/600x800.png?text=Placeholder+Poster+2'">
-                    <div class="image-caption">Ấn phẩm Poster 02: Concept "Di sản Bền vững"</div>
-                </div>
-
-                <div class="gallery-item full-width">
-                    <img src="hinh_bai5_blog.png" alt="Bài viết Blog Du lịch" onerror="this.src='https://via.placeholder.com/1200x600.png?text=Placeholder+Blog+Post'">
-                    <div class="image-caption">Giao diện bài viết Blog du lịch chuyên sâu được lên dàn ý bởi Gemini và minh họa bởi Nano Banana</div>
-                </div>
+                <div class="gallery-item"><img src="hinh_bai5_poster1.png" alt="Poster 1" onerror="this.src='https://via.placeholder.com/600x800.png'"><div class="image-caption">Poster 01: "Góc phố Xanh"</div></div>
+                <div class="gallery-item"><img src="hinh_bai5_poster2.png" alt="Poster 2" onerror="this.src='https://via.placeholder.com/600x800.png'"><div class="image-caption">Poster 02: "Di sản Bền vững"</div></div>
+                <div class="gallery-item full-width"><img src="hinh_bai5_blog.png" alt="Blog" onerror="this.src='https://via.placeholder.com/1200x600.png'"><div class="image-caption">Bài viết Blog được lên dàn ý bởi Gemini, minh họa bởi Nano Banana</div></div>
             </div>
         </section>
-
     </div>
-
-    <footer>
-        <p>© 2026 Bùi Lê Minh - MSSV: 25021868. Bản quyền Portfolio thuộc học phần VNU1001.</p>
-    </footer>
-
+    <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>
 </body>
 </html>
