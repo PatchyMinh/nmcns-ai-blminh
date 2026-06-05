@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3 | Kỹ nghệ viết Prompt & Giải mã AI</title>
+    <style>
+        /* GIỮ NGUYÊN BỘ CSS ĐỒNG BỘ CỦA DỰ ÁN */
+        :root {
+            --primary: #059669;
+            --primary-light: #f0fdf4;
+            --primary-hover: #047857;
+            --dark: #0f172a;
+            --slate: #475569;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--light); color: #334155; line-height: 1.75; }
+
+        /* Navbar */
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .nav-logo { color: white; font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: 0.5px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: white; font-weight: 600; }
+
+        /* Container & Header */
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
+        .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; overflow: hidden; }
+        .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
+        .report-header h1 { color: var(--dark); font-size: 2.2rem; line-height: 1.3; margin-bottom: 1.5rem; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
+        .meta-item span { font-weight: 600; color: var(--dark); }
+
+        /* Sections */
+        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; }
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; }
+        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; }
+        p { margin-bottom: 1.2rem; text-align: justify; color: #475569; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #475569; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* So sánh Prompt Before/After */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+        .prompt-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .prompt-header { padding: 1rem 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        .header-bad { background-color: #fee2e2; color: #991b1b; border-bottom: 1px solid #f87171; }
+        .header-good { background-color: #dcfce7; color: #166534; border-bottom: 1px solid #4ade80; }
+        .prompt-body { padding: 1.5rem; font-family: monospace; font-size: 0.95rem; color: #334155; background-color: #f8fafc; white-space: pre-wrap; line-height: 1.6; }
+        .prompt-analysis { padding: 1.5rem; border-top: 1px dashed var(--border); font-size: 0.9rem; }
+
+        /* Badge / Tag */
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-right: 0.5rem; margin-bottom: 0.5rem; background: var(--primary-light); color: var(--primary); border: 1px solid #bbf7d0; }
+
+        /* Image Wrapper */
+        .image-wrapper { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; }
+        .image-wrapper img { max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .image-caption { font-size: 0.85rem; color: var(--slate); margin-top: 0.75rem; font-style: italic; }
+
+        footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
+            .nav-links a { margin: 0 0.5rem; }
+            .container { margin: 1.5rem auto; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .report-header, .content-section { padding: 1.75rem; }
+            .report-header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">BÙI LÊ MINH • PORTFOLIO</a>
+        <div class="nav-links">
+            <a href="index.html">Giới thiệu</a>
+            <a href="bai1.html">Bài 1</a>
+            <a href="bai2.html">Bài 2</a>
+            <a href="bai3.html" class="active">Bài 3 (Prompt)</a>
+            <a href="bai4.html">Bài 4</a>
+            <a href="bai5.html">Bài 5</a>
+            <a href="bai6.html">Bài 6</a>
+            <a href="tongket.html">Tổng kết</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <header class="report-header">
+            <h1>BÁO CÁO THỰC HÀNH: KỸ NGHỆ VIẾT PROMPT VÀ PHÂN TÍCH CƠ CHẾ AI</h1>
+            <div class="meta-grid">
+                <div class="meta-item"><span>Sinh viên:</span> Bùi Lê Minh</div>
+                <div class="meta-item"><span>MSSV:</span> 25021868</div>
+                <div class="meta-item"><span>Nhiệm vụ:</span> Tương tác và Tối ưu hóa LLMs</div>
+                <div class="meta-item"><span>Mô hình sử dụng:</span> Google Gemini / ChatGPT</div>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <h2>I. Khung Tư Duy Thiết Kế Prompt (Mức 4)</h2>
+            <p>Sự khác biệt giữa một người dùng AI thông thường và một sinh viên CNTT nằm ở khả năng kiểm soát thuật toán thông qua dữ liệu đầu vào. Thay vì nhập các câu lệnh đơn chiều (Zero-shot Prompting), tôi áp dụng khung tư duy <strong>CREATE (Context - Role - Task - Format)</strong> để định hình không gian vector biểu diễn của Mô hình ngôn ngữ lớn (LLM):</p>
+            <ul>
+                <li><span class="badge">Context</span> Cung cấp bối cảnh học thuật rõ ràng để AI thu hẹp phạm vi tìm kiếm dữ liệu.</li>
+                <li><span class="badge">Role</span> Gán vai trò chuyên gia, ép AI sử dụng từ vựng và văn phong chuyên ngành.</li>
+                <li><span class="badge">Task & Constraints</span> Chỉ định nhiệm vụ cụ thể và các giới hạn (độ dài, định dạng) để tránh hiện tượng AI lan man hoặc sinh ảo giác (Hallucination).</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>II. Thực Nghiệm: Tối Ưu Hóa Câu Lệnh Từng Bước</h2>
+            <p>Dưới đây là minh chứng quá trình tôi nâng cấp câu lệnh khi nghiên cứu chủ đề: <strong>"Kiến trúc máy tính và Thiết bị ngoại vi"</strong>.</p>
+            
+            <div class="comparison-grid">
+                <div class="prompt-card">
+                    <div class="prompt-header header-bad">
+                        ❌ Prompt Mức 1 (Bản năng)
+                    </div>
+                    <div class="prompt-body">"Viết cho tôi một bài về máy tính và thiết bị ngoại vi để tôi làm bài tập về nhà."</div>
+                    <div class="prompt-analysis">
+                        <strong>Phân tích cơ chế:</strong> Lệnh quá mơ hồ. Do không có ngữ cảnh, AI tự động kích hoạt bộ trọng số (weights) phân phối xác suất từ vựng chung chung. Kết quả trả về giống như một bài viết Wikipedia cơ bản, thiếu chiều sâu kỹ thuật, không thể dùng làm tư liệu học tập ở bậc Đại học.
+                    </div>
+                </div>
+
+                <div class="prompt-card">
+                    <div class="prompt-header header-good">
+                        ✅ Prompt Mức 4 (Kỹ nghệ cấu trúc)
+                    </div>
+                    <div class="prompt-body">"Đóng vai trò là một Chuyên gia Phần cứng máy tính. Tôi là sinh viên năm nhất ngành CNTT tại UET. 
+                    
+[Nhiệm vụ]: Hãy tổng hợp kiến thức về 'Thiết bị ngoại vi hiện đại'. 
+
+[Yêu cầu kỹ thuật]:
+1. Tập trung vào thông số kỹ thuật (DPI, Refresh Rate, Chuẩn kết nối HDMI 2.1/DP 1.4).
+2. Lược bỏ các công nghệ cũ (như VGA, chuột bi).
+3. Trình bày dưới dạng Bảng Markdown gồm: Tên thiết bị, Phân loại (Nhập/Xuất), Thông số cốt lõi."</div>
+                    <div class="prompt-analysis">
+                        <strong>Phân tích cơ chế:</strong> Kỹ thuật *Few-shot* và *Constraint-based* đã ép mô hình Transformer tập trung sự chú ý (Attention Mechanism) vào cụm vector "kỹ thuật, năm nhất IT, thông số". AI trả về đúng định dạng Markdown, thông tin sắc bén và loại bỏ hoàn toàn các dữ liệu thừa.
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-wrapper">
+                <img src="hinh_bai3_sau.png" alt="Kết quả Prompt Mức 4" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Ket+qua+Prompt+Muc+4'">
+                <div class="image-caption">Hình 3.1: Minh chứng kết quả truy xuất dữ liệu dạng bảng Markdown khi áp dụng Prompt Mức 4</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>III. Đánh Giá Sự Hiệu Quả Và Trách Nhiệm Sử Dụng</h2>
+            <p>Việc đầu tư tư duy vào quy trình Prompt Engineering không chỉ mang lại kết quả học thuật chất lượng cao mà còn giải quyết được hai bài toán cốt lõi trong kỷ nguyên AI:</p>
+            <ol>
+                <li><strong>Tối ưu hóa tài nguyên (Token Optimization):</strong> Prompt rõ ràng giúp AI trả về đúng trọng tâm ngay từ lần chạy đầu tiên, tiết kiệm chi phí token tính toán, hạn chế việc phải hỏi đi hỏi lại (prompt chaining) gây lãng phí năng lượng máy chủ.</li>
+                <li><strong>Kiểm soát tính nguyên bản:</strong> Bằng cách định dạng cấu trúc đầu ra theo đúng ý đồ của mình, tôi biến AI thành một "trợ lý gia công dữ liệu" thay vì một "người làm hộ bài tập". Tư duy thuật toán cấu trúc bảng và lựa chọn chuẩn kết nối hoàn toàn là tư duy của tôi, AI chỉ giúp tăng tốc quá trình gõ văn bản và tổng hợp.</li>
+            </ol>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Bùi Lê Minh - MSSV: 25021868. Bản quyền Portfolio thuộc học phần VNU1001.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Kết | Đánh giá & Suy ngẫm</title>
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-light: #f0fdf4;
+            --primary-hover: #047857;
+            --dark: #0f172a;
+            --slate: #475569;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--light); color: #334155; line-height: 1.75; }
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { color: white; font-weight: 700; font-size: 1.25rem; text-decoration: none; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: white; font-weight: 600; }
+        .container { max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; }
+        .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; text-align: center; }
+        .report-header h1 { color: var(--dark); font-size: 2.5rem; margin-bottom: 1rem; }
+        .report-header p { color: var(--primary); font-weight: 600; font-size: 1.1rem; }
+        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; }
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        .highlight-box { background: var(--primary-light); border: 1px solid #bbf7d0; padding: 2rem; border-radius: 12px; margin-top: 2rem; }
+        .highlight-box h3 { color: var(--primary-hover); margin-bottom: 1rem; font-size: 1.25rem; }
+        .highlight-box ul { padding-left: 1.5rem; }
+        .back-home { display: block; width: max-content; margin: 3rem auto 0; padding: 0.75rem 2rem; background: var(--dark); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: background 0.3s; }
+        .back-home:hover { background: var(--primary); }
+        footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
+            .nav-links a { margin: 0 0.5rem; }
+            .container { margin: 1.5rem auto; }
+            .report-header, .content-section { padding: 1.75rem; }
+            .report-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">BÙI LÊ MINH • PORTFOLIO</a>
+        <div class="nav-links">
+            <a href="index.html">Giới thiệu</a>
+            <a href="bai1.html">Bài 1 (Thao tác)</a>
+            <a href="bai2.html">Bài 2 (Tìm kiếm)</a>
+            <a href="bai3.html">Bài 3 (Prompt)</a>
+            <a href="bai4.html">Bài 4 (Hợp tác)</a>
+            <a href="bai5.html">Bài 5 (Sáng tạo)</a>
+            <a href="bai6.html">Bài 6 (Đạo đức)</a>
+            <a href="tongket.html" class="active">Tổng kết</a>
+        </div>
+    </nav>
+    <div class="container">
+        <header class="report-header">
+            <h1>Tổng Kết & Tự Đánh Giá</h1>
+            <p>Tinh thần Hansei: Nhìn lại để vươn xa trong Kỷ nguyên số</p>
+        </header>
+        <section class="content-section">
+            <h2>I. Sự Trưởng Thành Về Nhận Thức</h2>
+            <p>Hành trình xây dựng Portfolio và thực hiện các nhiệm vụ của học phần VNU1001 không chỉ là việc hoàn thành các bài tập kỹ năng đơn lẻ, mà là một quá trình <strong>tái cấu trúc toàn diện tư duy làm việc</strong>. Trước đây, tôi tiếp cận công nghệ với tâm thế của một "người dùng thụ động" – chỉ biết sử dụng bề nổi của công cụ.</p>
+            <p>Hiện tại, thông qua việc thực hành cấu trúc thư mục logic, khai thác toán tử tìm kiếm chuyên sâu, kỹ nghệ Prompt Engineering và sử dụng AI có trách nhiệm, tôi đã chuyển mình thành một <strong>"người làm chủ công nghệ chủ động"</strong>. Tôi hiểu được cơ chế vận hành cốt lõi của AI, từ đó biết cách điều hướng và kiểm soát chúng phục vụ cho mục tiêu học thuật cá nhân.</p>
+            <h2 style="margin-top: 2.5rem;">II. Vượt Qua Thách Thức Bằng Tư Duy Phản Biện</h2>
+            <p>Thách thức lớn nhất trong suốt dự án là việc đối mặt với "biển" thông tin nhiễu loạn và hiện tượng ảo giác (hallucination) của AI tạo sinh. Để vượt qua, tôi đã rèn luyện và áp dụng triệt để <strong>Tư duy Phản biện (Critical Thinking)</strong>: luôn đặt câu hỏi nghi vấn với mọi kết quả máy tính trả về, thực hiện đối chiếu chéo (cross-check) trên ma trận tài liệu khoa học, và kiên định với bộ nguyên tắc liêm chính học thuật đã đề ra ở Bài 6.</p>
+            <div class="highlight-box">
+                <h3>🚀 Định Hướng Ứng Dụng Tương Lai</h3>
+                <p>Những kiến thức Năng lực số này sẽ là bệ phóng vững chắc cho chặng đường tại UET cũng như sự nghiệp IT sau này:</p>
+                <ul>
+                    <li>✓ Áp dụng kỹ năng quản lý dự án (Planner/Teams) vào các đồ án lập trình nhóm quy mô lớn.</li>
+                    <li>✓ Sử dụng toán tử tìm kiếm nâng cao để đọc hiểu tài liệu khoa học và Documentations quốc tế.</li>
+                    <li>✓ Ứng dụng Generative AI có trách nhiệm để tối ưu phân tích thuật toán, rà soát mã lỗi, bảo mật quyền sở hữu trí tuệ.</li>
+                </ul>
+            </div>
+        </section>
+        <a href="index.html" class="back-home">← Quay lại Trang Chủ Portfolio</a>
+    </div>
+    <footer>
+        <p>© 2026 Bùi Lê Minh - MSSV: 25021868. Bản quyền Portfolio thuộc học phần VNU1001.</p>
+    </footer>
+</body>
+</html>
