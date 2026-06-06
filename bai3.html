@@ -32,16 +32,33 @@
         .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
         .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
         h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
-        p, ul, ol, .comparison-grid { position: relative; z-index: 1; }
+        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; position: relative; z-index: 1; }
+        p, ul, ol, .comparison-grid, .table-responsive { position: relative; z-index: 1; }
+        p { margin-bottom: 1.2rem; text-align: justify; color: #334155; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #334155; }
+        li { margin-bottom: 0.5rem; }
+        strong { color: var(--dark); }
+        
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
-        .prompt-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .prompt-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white; }
         .prompt-header { padding: 1rem 1.5rem; font-weight: 700; }
         .header-bad { background-color: #fee2e2; color: #991b1b; border-bottom: 1px solid #f87171; }
         .header-good { background-color: #dcfce7; color: #166534; border-bottom: 1px solid #4ade80; }
-        .prompt-body { padding: 1.5rem; font-family: monospace; font-size: 0.9rem; background-color: #f8fafc; white-space: pre-wrap; }
+        .prompt-body { padding: 1.5rem; font-family: monospace; font-size: 0.9rem; background-color: #f8fafc; white-space: pre-wrap; line-height: 1.6; }
+        
         .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-right: 0.5rem; background: #fef2f2; color: var(--primary); border: 1px solid #fecaca; }
-        .image-wrapper { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; }
+        
+        .table-responsive { overflow-x: auto; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: white; }
+        th, td { padding: 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+        th:last-child, td:last-child { border-right: none; }
+        th { background-color: #f1f5f9; color: var(--dark); font-weight: 700; }
+        
+        .image-wrapper { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; position: relative; z-index: 1;}
+        .image-caption { font-size: 0.85rem; color: var(--slate); margin-top: 0.75rem; font-style: italic; }
+        
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+        
         @media (max-width: 768px) { .comparison-grid { grid-template-columns: 1fr; } .navbar { flex-direction: column; } .nav-links a { margin: 0 0.5rem; } }
     </style>
 </head>
@@ -49,35 +66,138 @@
     <nav class="navbar">
         <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
         <div class="nav-links">
-            <a href="index.html">己 紹介</a><a href="bai1.html">整 1</a><a href="bai2.html">索 2</a>
-            <a href="bai3.html" class="active">問 3</a><a href="bai4.html">協 4</a><a href="bai5.html">創 5</a>
-            <a href="bai6.html">正 6</a><a href="tongket.html">省 総括</a>
+            <a href="index.html">己 紹介</a>
+            <a href="bai1.html">整 1</a>
+            <a href="bai2.html">索 2</a>
+            <a href="bai3.html" class="active">問 3</a>
+            <a href="bai4.html">協 4</a>
+            <a href="bai5.html">創 5</a>
+            <a href="bai6.html">正 6</a>
+            <a href="tongket.html">省 総括</a>
         </div>
     </nav>
     <div class="container">
         <header class="report-header">
             <h1>BÁO CÁO THỰC HÀNH: KỸ NGHỆ VIẾT PROMPT VÀ PHÂN TÍCH CƠ CHẾ AI</h1>
-            <div class="meta-grid"><div><span>Sinh viên:</span> Bùi Lê Minh</div><div><span>MSSV:</span> 25021868</div><div><span>Nhiệm vụ:</span> Tương tác và Tối ưu hóa LLMs</div><div><span>Mô hình:</span> Google Gemini</div></div>
+            <div class="meta-grid">
+                <div><span>Sinh viên:</span> Bùi Lê Minh</div>
+                <div><span>MSSV:</span> 25021868</div>
+                <div><span>Nhiệm vụ:</span> Tương tác và Tối ưu hóa LLMs</div>
+                <div><span>Mô hình:</span> Google Gemini / ChatGPT</div>
+            </div>
         </header>
+
+        <section class="content-section">
+            <div class="kanji-bg">選</div>
+            <h2>I. Lựa Chọn và Phân Tích Tác Vụ Học Tập</h2>
+            <p>Để đánh giá sự khác biệt của kỹ nghệ Prompt, tôi đã lựa chọn 3 tác vụ học tập điển hình với các thách thức riêng biệt[cite: 226]:</p>
+            <ul>
+                <li><strong>Tác vụ 1: Tóm tắt tài liệu học thuật (Cơ chế hoạt động của AI/LLM):</strong> Thách thức là phải tránh việc tóm tắt bị thiếu ý chính hoặc giữ lại quá nhiều từ ngữ chuyên ngành gây khó hiểu cho người đọc[cite: 227, 229, 230].</li>
+                <li><strong>Tác vụ 2: Giải thích khái niệm phức tạp (Bill Pugh Singleton):</strong> Thách thức nằm ở chỗ AI dễ giải thích một cách máy móc, cần ép AI sử dụng phép ẩn dụ và ví dụ thực tế cho người mới bắt đầu[cite: 231, 233, 234].</li>
+                <li><strong>Tác vụ 3: Tạo bộ câu hỏi ôn tập (Lập trình hướng đối tượng - OOP):</strong> Thách thức là câu hỏi AI tạo ra thường quá dễ hoặc nhàm chán, cần đa dạng hóa mức độ và có giải thích chi tiết đáp án[cite: 235, 236, 237].</li>
+            </ul>
+        </section>
+
         <section class="content-section">
             <div class="kanji-bg">問</div>
-            <h2>I. 問 — Khung Tư Duy Thiết Kế Prompt (Mức 4)</h2>
-            <p>Thay vì câu lệnh đơn chiều, tôi áp dụng khung <strong>CREATE (Context - Role - Task - Format)</strong>:</p>
-            <ul><li><span class="badge">Context</span> Bối cảnh học thuật thu hẹp phạm vi.</li><li><span class="badge">Role</span> Vai trò chuyên gia ép từ vựng chuyên ngành.</li><li><span class="badge">Task & Constraints</span> Nhiệm vụ cụ thể, giới hạn độ dài/định dạng.</li></ul>
+            <h2>II. Khung Tư Duy Thiết Kế Prompt - Công thức CREATE</h2>
+            <p>Để khai thác tối đa Mô hình ngôn ngữ lớn (LLM), tôi áp dụng triệt để khung <strong>CREATE</strong>[cite: 366]:</p>
+            <ul>
+                <li><span class="badge">C</span> <strong>Context (Bối cảnh):</strong> Luôn cho AI biết nó đang giải quyết vấn đề cho ai (ví dụ: học sinh cấp 2, sinh viên năm nhất)[cite: 367].</li>
+                <li><span class="badge">R</span> <strong>Role (Vai trò):</strong> Gắn cho AI một nhân dạng (Giáo sư, chuyên gia) để định hình toàn bộ không gian từ vựng và giọng văn[cite: 368].</li>
+                <li><span class="badge">E</span> <strong>Explicit Constraints (Ràng buộc rõ ràng):</strong> Quy định chặt chẽ về độ dài (ví dụ: dưới 200 chữ) và định dạng (bullet points, bảng biểu)[cite: 369].</li>
+                <li><span class="badge">A</span> <strong>Actionable Steps (Các bước cụ thể):</strong> Nếu tác vụ phức tạp, phân tách thành Bước 1, Bước 2,... để AI tư duy rành mạch[cite: 370].</li>
+                <li><span class="badge">T</span> <strong>Tone (Giọng điệu):</strong> Cụ thể hóa cảm xúc của văn bản (hài hước, nghiêm túc, truyền cảm hứng)[cite: 371].</li>
+                <li><span class="badge">E</span> <strong>Examples (Ví dụ):</strong> Cung cấp sẵn các mẫu nhỏ (few-shot) để AI bắt chước chính xác tư duy[cite: 372].</li>
+            </ul>
         </section>
+
         <section class="content-section">
             <div class="kanji-bg">対</div>
-            <h2>II. Thực Nghiệm: Tối Ưu Hóa Câu Lệnh</h2>
+            <h2>III. Thực Nghiệm: Tối Ưu Hóa Câu Lệnh Qua 3 Tác Vụ</h2>
+            
+            <h3>1. Tác vụ Tóm tắt (Cơ chế LLM)</h3>
             <div class="comparison-grid">
-                <div class="prompt-card"><div class="prompt-header header-bad">❌ Prompt Mức 1 (Bản năng)</div><div class="prompt-body">"Tóm tắt bài viết sau về Mô hình ngôn ngữ lớn (LLM)."</div></div>
-                <div class="prompt-card"><div class="prompt-header header-good">✅ Prompt Mức 4 (Kỹ nghệ)</div><div class="prompt-body">"Đóng vai Giáo sư Khoa học Máy tính. Tóm tắt văn bản về LLM cho sinh viên năm nhất không chuyên. Yêu cầu: 3 bullet points, dưới 200 chữ, dùng phép liên tưởng thực tế."</div></div>
+                <div class="prompt-card">
+                    <div class="prompt-header header-bad">❌ Prompt Mức 1 (Bản năng)</div>
+                    <div class="prompt-body">"Tóm tắt bài viết sau về Mô hình ngôn ngữ lớn (LLM)." [cite: 241]</div>
+                </div>
+                <div class="prompt-card">
+                    <div class="prompt-header header-good">✅ Prompt Mức 4 (Kỹ nghệ Nâng cao)</div>
+                    <div class="prompt-body">"Đóng vai một giáo sư Khoa học Máy tính. Hãy tóm tắt văn bản dưới đây về LLM dành cho sinh viên năm nhất không chuyên. 
+Yêu cầu bắt buộc:
+1. Dùng bullet points cho 3 ý chính.
+2. Dưới 200 chữ.
+3. Sử dụng một phép liên tưởng thực tế (ví dụ: trò chơi điền từ)." [cite: 260, 261, 263, 264, 265]</div>
+                </div>
             </div>
-            <div class="image-wrapper"><img src="hinh_bai3_sau.png" alt="Kết quả Prompt" onerror="this.src='https://via.placeholder.com/800x450.png'"><div class="image-caption">Hình 3.1: Kết quả Prompt Mức 4 dạng bảng Markdown</div></div>
+
+            <h3>2. Tác vụ Giải thích (Bill Pugh Singleton)</h3>
+            <div class="comparison-grid">
+                <div class="prompt-card">
+                    <div class="prompt-header header-bad">❌ Prompt Mức 1 (Bản năng)</div>
+                    <div class="prompt-body">"Bill Pugh Singleton là gì?" [cite: 275]</div>
+                </div>
+                <div class="prompt-card">
+                    <div class="prompt-header header-good">✅ Prompt Mức 4 (Kỹ nghệ Nâng cao)</div>
+                    <div class="prompt-body">"Đóng vai một nhà truyền thông khoa học truyền cảm hứng. Hãy giải thích 'Bill Pugh Singleton' cho một học sinh cấp 3 theo các bước:
+Bước 1: Giải thích Singleton cơ bản và điểm yếu.
+Bước 2: Giới thiệu cơ chế JVM và cách Bill Pugh 'lách' để tối ưu.
+Bước 3: Nêu 1 lợi ích to lớn. Tránh thuật ngữ hàn lâm." [cite: 293, 294, 295, 306, 315, 316]</div>
+                </div>
+            </div>
+
+            <h3>3. Tác vụ Tạo bài trắc nghiệm (OOP)</h3>
+            <div class="comparison-grid">
+                <div class="prompt-card">
+                    <div class="prompt-header header-bad">❌ Prompt Mức 1 (Bản năng)</div>
+                    <div class="prompt-body">"Tạo câu hỏi ôn tập về lập trình hướng đối tượng." [cite: 322]</div>
+                </div>
+                <div class="prompt-card">
+                    <div class="prompt-header header-good">✅ Prompt Mức 4 (Kỹ nghệ Nâng cao)</div>
+                    <div class="prompt-body">"Đóng vai một giảng viên OOP dày dặn kinh nghiệm. Hãy tạo một bộ câu hỏi ôn tập chuyên sâu về OOP:
+- 10 câu trắc nghiệm (Nhận biết, Thông hiểu).
+- 3 câu tự luận (Vận dụng).
+Yêu cầu đặc biệt: Không chỉ đưa đáp án mà phải cung cấp lời giải thích chi tiết tại sao các phương án khác lại sai để học sinh rút kinh nghiệm." [cite: 346, 347, 348, 349, 350]</div>
+                </div>
+            </div>
         </section>
+
         <section class="content-section">
             <div class="kanji-bg">効</div>
-            <h2>III. Đánh Giá Hiệu Quả và Trách Nhiệm</h2>
-            <ol><li><strong>Tối ưu token:</strong> Prompt rõ ràng giúp AI trả về đúng trọng tâm.</li><li><strong>Kiểm soát tính nguyên bản:</strong> Định dạng đầu ra theo ý đồ, biến AI thành trợ lý gia công dữ liệu.</li></ol>
+            <h2>IV. So Sánh và Phân Tích Hiệu Quả Cơ Chế AI</h2>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mức độ Prompt</th>
+                            <th>Kết quả đầu ra</th>
+                            <th>Phân tích chuyên sâu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cơ bản</strong></td>
+                            <td>Dàn trải, không cấu trúc thống nhất. Giọng văn trung tính, khô khan như từ điển[cite: 360].</td>
+                            <td>Tạo ra câu trả lời ngẫu nhiên về cấu trúc, văn phong giống robot và đôi khi thiếu trọng tâm[cite: 360].</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cải tiến</strong></td>
+                            <td>Bám sát số lượng, định dạng (đúng 3 đoạn, 5 câu hỏi), trình bày khoa học hơn nhưng văn phong vẫn an toàn[cite: 361].</td>
+                            <td>Định hình được khối lượng thông tin và cấu trúc hiển thị nhưng chưa đột phá về mặt truyền đạt[cite: 361].</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nâng cao</strong></td>
+                            <td>Nhập vai xuất sắc, cuốn hút. Sử dụng ẩn dụ thông minh (máy pha cà phê). Giải thích cặn kẽ cả các phương án sai[cite: 361].</td>
+                            <td>Sự lột xác hoàn toàn. Việc yêu cầu "giải thích tại sao sai" đã biến bài test thành một tài liệu tự học vô giá[cite: 361].</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Lý giải sự hiệu quả qua góc độ "Tư duy phản biện" của AI</h3>
+            <p>Bản chất của LLM là dự đoán từ (token) tiếp theo[cite: 362]. Khi chúng ta cung cấp <strong>"Role" (Vai trò)</strong>, ta đang chủ động thu hẹp không gian từ vựng và xác suất của AI về một chuyên ngành hoặc phong cách cụ thể[cite: 363]. Hơn nữa, việc sử dụng kỹ thuật <strong>"Chain-of-thought" (hướng dẫn từng bước)</strong> giúp AI phân bổ logic nội dung chặt chẽ, giảm thiểu tối đa hiện tượng "ảo giác" (hallucination) thay vì để AI tự do sinh ra văn bản[cite: 364].</p>
         </section>
     </div>
     <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>
