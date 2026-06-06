@@ -96,47 +96,44 @@
             <p>Đối với một sinh viên ngành Công nghệ Thông tin, việc quản lý dữ liệu không chỉ dừng lại ở thao tác "Tạo thư mục" cơ bản, mà phải hướng tới việc xây dựng một <strong>Kiến trúc thông tin</strong> mang tính quy mô, dễ dàng mở rộng trong suốt 4 năm học. Trọng tâm của hệ thống này là nguyên tắc: <em>"Có thể truy xuất bất kỳ tệp tin nào trong tối đa 3 lần nhấp chuột (3-Click Rule)"</em>.</p>
             <div class="highlight-box">
                 <strong>💡 Giải pháp Mức 4 (Tối ưu hóa hệ thống):</strong> 
-                Thay vì lưu trữ dữ liệu rải rác trên màn hình Desktop hoặc ổ đĩa C (gây rủi ro mất dữ liệu khi lỗi hệ điều hành), toàn bộ cấu trúc học tập được tôi chuyển hóa và quy hoạch tập trung trên một phân vùng ổ cứng độc lập (Ổ D) và đồng bộ thời gian thực (Real-time Sync) lên đám mây (Google Drive/OneDrive).
+                Thay vì lưu trữ dữ liệu rải rác trên màn hình Desktop hoặc ổ đĩa C (gây rủi ro mất dữ liệu khi lỗi hệ điều hành), toàn bộ cấu trúc học tập được tôi chuyển hóa và quy hoạch tập trung trên một phân vùng ổ cứng độc lập (Ổ D).
             </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">階層</div>
             <h2>II. Xây dựng Sơ đồ Phân cấp Cây thư mục (Tree Structure)</h2>
-            <p>Để triệt tiêu hoàn toàn sự hỗn loạn dữ liệu, hệ thống thư mục của tôi được phân cấp theo cấu trúc hình cây từ vĩ mô đến vi mô:</p>
+            <p>Dựa trên kiến trúc quản lý thực tế trên thiết bị của tôi (ổ đĩa D:), hệ thống thư mục được phân cấp theo cấu trúc hình cây từ vĩ mô đến vi mô để triệt tiêu hoàn toàn sự hỗn loạn dữ liệu. Ví dụ:</p>
             <ul>
-                <li><strong>Cấp 1 (Định danh Năm học):</strong> <code>Nam_Nhat_2025_2026</code></li>
-                <li><strong>Cấp 2 (Học kỳ):</strong> <code>Hoc_Ky_2</code></li>
-                <li><strong>Cấp 3 (Tên môn học chuẩn mã):</strong> <code>VNU1001_Cong_nghe_so</code>, <code>INT1008_Tin_hoc_co_so</code>...</li>
-                <li><strong>Cấp 4 (Phân loại tài nguyên):</strong> Trong mỗi môn học, dữ liệu tiếp tục chia thành 3 nhóm cốt lõi: <code>01_Tai_lieu_giang_vien</code>, <code>02_Bai_tap_ca_nhan</code>, <code>03_Du_an_nhom</code>. Việc gắn tiền tố số (01, 02) giúp các thư mục luôn tự động sắp xếp theo đúng trật tự ưu tiên.</li>
+                <li><strong>Cấp 1 (Trường học):</strong> <code>UET</code></li>
+                <li><strong>Cấp 2 (Năm học):</strong> <code>2025 - 2026</code></li>
+                <li><strong>Cấp 3 (Học kỳ):</strong> <code>Ki_2</code></li>
+                <li><strong>Cấp 4 (Môn học):</strong> <code>DSA</code> (Data Structures and Algorithms - Cấu trúc Dữ liệu và Giải thuật)</li>
+                <li><strong>Cấp 5 (Phân loại tài nguyên):</strong> <code>De_thi</code> (Dùng để lưu trữ toàn bộ đề thi qua các năm của môn học)</li>
             </ul>
             <div class="image-wrapper">
-                <img src="hinh_bai3_1.png" alt="Sơ đồ cây thư mục học tập" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Cay+Thu+Muc'">
-                <div class="image-caption">Hình 1.1: Minh chứng cấu trúc phân cấp cây thư mục học tập</div>
+                <img src="bai1_1.png" alt="Sơ đồ cây thư mục học tập" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Cay+Thu+Muc'">
+                <div class="image-caption">Hình 1.1: Minh chứng cấu trúc phân cấp cây thư mục học tập tại ổ đĩa D:\UET\2025 - 2026\Ki_2\DSA\De_thi</div>
             </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">名</div>
             <h2>III. Chuẩn hóa Quy tắc Đặt tên Tệp tin (Naming Conventions)</h2>
-            <p>Việc đặt tên file kiểu cũ như <em>"bai_tap_cuoi.docx"</em> hay <em>"bai_tap_cuoi_chot.docx"</em> gây ra sự xung đột phiên bản nghiêm trọng. Để khắc phục, tôi đã áp dụng bộ quy tắc quản lý phiên bản với cú pháp khắt khe:</p>
-            <p style="text-align: center; margin: 1.5rem 0;"><code>[MãMôn]_[Tên_Nhiệm_Vụ]_[HọTên/MãNhóm]_[PhiênBản]_[NgàyTháng]</code></p>
+            <p>Việc đặt tên file tùy tiện gây khó khăn rất lớn trong việc tra cứu lại tài liệu cũ. Để khắc phục, tôi đã áp dụng bộ quy tắc chuẩn hóa với cú pháp rõ ràng, cụ thể đối với thư mục lưu trữ Đề thi:</p>
+            <p style="text-align: center; margin: 1.5rem 0;"><code>[Mã_Môn]_[Khoa]_[Năm_Học]</code></p>
             <h3>Phân tích hiệu quả cú pháp:</h3>
             <ol>
-                <li><strong>Không sử dụng khoảng trắng:</strong> Sử dụng dấu gạch dưới <code>_</code> hoặc dấu gạch nối <code>-</code> để đảm bảo tệp tin không bị lỗi đường dẫn khi đẩy lên GitHub hoặc các máy chủ Linux.</li>
-                <li><strong>Không dùng tiếng Việt có dấu:</strong> Ngăn chặn lỗi font chữ khi chia sẻ file đa nền tảng.</li>
-                <li><strong>Định danh phiên bản rõ ràng:</strong> Sử dụng <code>v1.0</code> (Bản nháp), <code>v1.1</code> (Bản sửa đổi), <code>FINAL</code> (Bản nộp chính thức).</li>
+                <li><strong>Phân loại theo môn và hệ đào tạo:</strong> Tiền tố <code>DSA_FIT</code> (Khoa Công nghệ thông tin) và <code>DSA_IAI</code> (viện Trí tuệ Nhân tạo) giúp phân định rõ ràng chuẩn đầu ra và độ khó của đề thi.</li>
+                <li><strong>Dễ dàng quản lý theo dòng thời gian:</strong> Các hậu tố như <code>2020-2021</code>, <code>2022-2023</code>, <code>2024-2025</code> cho phép các tệp tin tự động sắp xếp theo thứ tự thời gian, hỗ trợ việc ôn tập các đề thi gần nhất một cách nhanh chóng.</li>
+                <li><strong>Định dạng chuẩn hệ thống:</strong> Sử dụng dấu gạch dưới <code>_</code> và dấu gạch ngang <code>-</code> thay cho khoảng trắng và tiếng Việt có dấu, đảm bảo tệp tin không bị lỗi đường dẫn khi đẩy lên đám mây hoặc chia sẻ đa nền tảng.</li>
             </ol>
-            <div class="image-wrapper">
-                <img src="hinh_bai3_2.png" alt="Minh chứng chuẩn hóa tên tệp tin" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Dat+Ten+File'">
-                <div class="image-caption">Hình 1.2: Minh chứng việc áp dụng quy tắc đặt tên và quản lý phiên bản</div>
-            </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">省</div>
             <h2>IV. Kết luận — Tinh thần Kaizen</h2>
-            <p>Việc thiết lập và tuân thủ nghiêm ngặt các thao tác cơ bản với hệ thống tệp tin đã giúp tôi tiết kiệm ít nhất 20% thời gian tìm kiếm tài nguyên hàng tuần. Tư duy tổ chức dữ liệu minh bạch, khoa học này không chỉ đáp ứng hoàn hảo yêu cầu của học phần VNU1001, mà còn tạo lập nền móng vững chắc cho thói quen làm việc chuyên nghiệp (như quản lý mã nguồn qua Git) trong các đồ án Công nghệ Thông tin sau này.</p>
+            <p>Việc thiết lập và tuân thủ nghiêm ngặt các thao tác cơ bản với hệ thống tệp tin đã giúp tôi tiết kiệm ít nhất 20% thời gian tìm kiếm tài nguyên hàng tuần. Tư duy tổ chức dữ liệu minh bạch, khoa học này không chỉ đáp ứng hoàn hảo yêu cầu của môn học, mà còn tạo lập nền móng vững chắc cho thói quen làm việc chuyên nghiệp trong các dự án Công nghệ Thông tin sau này.</p>
         </section>
     </div>
 

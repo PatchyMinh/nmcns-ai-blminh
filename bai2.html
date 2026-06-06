@@ -97,7 +97,264 @@
             <h2>II. Chiến lược tìm kiếm và sàng lọc tài liệu</h2>
             <p>Áp dụng toán tử nâng cao: <code>"Bayesian Networks" AND ("medical diagnosis" OR "healthcare AI") AND "probabilistic graphical models" filetype:pdf site:.edu OR site:.org</code></p>
             <p>Bộ lọc: các tạp chí Q1 (Artificial Intelligence in Medicine, IEEE TMI, Nature) trong 2018-2024. Cơ sở dữ liệu: Google Scholar, IEEE Xplore, PubMed.</p>
-            <div class="image-wrapper"><img src="hinh_bai2_1.png" alt="Truy vấn nâng cao" onerror="this.src='https://via.placeholder.com/800x450.png'"><div class="image-caption">Hình 2.1: Ứng dụng toán tử tìm kiếm học thuật</div></div>
+            <!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 | Tìm kiếm & Đánh giá thông tin Học thuật</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9e2a2b;
+            --primary-light: #fef2f2;
+            --primary-hover: #7f1d1d;
+            --dark: #1a1a1a;
+            --washi: #fdfbf7;
+            --slate: #475569;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif JP', 'Segoe UI', Georgia, serif; }
+        body { background-color: var(--washi); color: var(--dark); line-height: 1.75; }
+
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
+        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: 0.5px; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
+        .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; overflow: hidden; }
+        .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
+        .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
+        .meta-item span { font-weight: 600; color: var(--dark); }
+
+        .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
+        .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
+        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; }
+        p, ul, ol, table { position: relative; z-index: 1; }
+        p { margin-bottom: 1.2rem; text-align: justify; color: #334155; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .research-question { background-color: #f8fafc; border-left: 4px solid #0284c7; padding: 1.5rem; margin: 1.5rem 0; }
+        .table-responsive { overflow-x: auto; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); }
+        table { width: 100%; min-width: 900px; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+        th, td { padding: 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+        th:last-child, td:last-child { border-right: none; }
+        th { background-color: #f1f5f9; color: var(--dark); font-weight: 700; }
+        .tag-pro { display: inline-block; padding: 0.2rem 0.5rem; background: #dcfce7; color: #166534; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .tag-con { display: inline-block; padding: 0.2rem 0.5rem; background: #fee2e2; color: #991b1b; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;}
+        .image-wrapper { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; }
+        .image-caption { font-size: 0.85rem; color: var(--slate); margin-top: 0.75rem; font-style: italic; }
+        footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
+            .nav-links a { margin: 0 0.5rem; }
+            .container { margin: 1.5rem auto; }
+            .report-header, .content-section { padding: 1.75rem; }
+            .report-header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
+        <div class="nav-links">
+            <a href="index.html">己 紹介</a>
+            <a href="bai1.html">整 1</a>
+            <a href="bai2.html" class="active">索 2</a>
+            <a href="bai3.html">問 3</a>
+            <a href="bai4.html">協 4</a>
+            <a href="bai5.html">創 5</a>
+            <a href="bai6.html">正 6</a>
+            <a href="tongket.html">省 総括</a>
+        </div>
+    </nav>
+    <div class="container">
+        <header class="report-header">
+            <h1>BÁO CÁO: TÌM KIẾM VÀ ĐÁNH GIÁ THÔNG TIN HỌC THUẬT [cite: 1]</h1>
+            <div class="meta-grid">
+                <div class="meta-item"><span>Sinh viên:</span> Bùi Lê Minh</div>
+                <div class="meta-item"><span>MSSV:</span> 25021868</div>
+                <div class="meta-item"><span>Học phần:</span> VNU1001</div>
+                <div class="meta-item" style="grid-column: span 2;"><span>Chuyên đề:</span> Khai thác dữ liệu nâng cao và Tổng quan tài liệu học thuật</div>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <div class="kanji-bg">索</div>
+            <h2>I. 索 — Lựa chọn chủ đề và Phạm vi tìm kiếm [cite: 3]</h2>
+            <p><strong>Chủ đề nghiên cứu:</strong> Ứng dụng của Suy luận Bayes (Bayesian Inference) trong các mô hình Trí tuệ Nhân tạo chẩn đoán y khoa[cite: 2].</p>
+            
+            <h3>Lý do chọn đề tài</h3>
+            <p>Trí tuệ nhân tạo (AI) trong y tế đòi hỏi độ chính xác cao và khả năng giải thích được (explainability)[cite: 4]. Việc ứng dụng xác suất thống kê, cụ thể là mạng Bayes, giúp mô hình AI xử lý các dữ liệu y khoa không chắc chắn và đưa ra dự đoán có cơ sở toán học rõ ràng[cite: 5]. Đây là một chủ đề hẹp, có tính thách thức cao, kết hợp giữa nền tảng Toán học và khoa học Máy tính[cite: 6].</p>
+            
+            <h3>Phạm vi tìm kiếm [cite: 7]</h3>
+            <ul>
+                <li><strong>Ngôn ngữ:</strong> Tiếng Anh (để tiếp cận các nghiên cứu mới nhất)[cite: 8].</li>
+                <li><strong>Từ khóa (Keywords):</strong> "Bayesian Networks in medical diagnosis", "Probabilistic graphical models healthcare", "Bayesian inference AI medicine"[cite: 9].</li>
+                <li><strong>Giới hạn thời gian:</strong> Chủ yếu tập trung vào các tài liệu từ năm 2018 - 2024 để đảm bảo tính cập nhật[cite: 10].</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <div class="kanji-bg">検</div>
+            <h2>II. Nguồn tìm kiếm thông tin [cite: 11]</h2>
+            <ul>
+                <li><strong>1. Cơ sở dữ liệu học thuật:</strong> Google Scholar, IEEE Xplore, PubMed (đặc thù cho y khoa)[cite: 12].</li>
+                <li><strong>2. Tạp chí khoa học chuyên ngành:</strong> Artificial Intelligence in Medicine, IEEE Transactions on Medical Imaging[cite: 13].</li>
+                <li><strong>3. Sách chuyên khảo:</strong> Sách nền tảng về AI và Học máy[cite: 14].</li>
+                <li><strong>4. Nguồn mở trên Internet:</strong> Các trang blog công nghệ uy tín từ các tổ chức nghiên cứu AI hàng đầu (MIT, Stanford)[cite: 15].</li>
+                <li><strong>5. Nguồn khai thác thêm (Ngoài yêu cầu):</strong> Báo cáo phân tích ngành từ các tổ chức tư vấn toàn cầu (McKinsey) để đánh giá tính ứng dụng thực tiễn[cite: 16].</li>
+            </ul>
+            <div class="image-wrapper"><img src="bai2_1.png" alt="Truy vấn nâng cao" onerror="this.src='https://via.placeholder.com/800x450.png'"><div class="image-caption">Hình 2.1: Ứng dụng toán tử tìm kiếm học thuật</div></div>
+        </section>
+
+        <section class="content-section">
+            <div class="kanji-bg">評</div>
+            <h2>III. Bảng Tổng hợp và Đánh giá độ tin cậy của Nguồn thông tin [cite: 17]</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên tài liệu & Loại nguồn</th>
+                            <th>Tác giả & Cơ quan Xuất bản</th>
+                            <th>Ưu điểm & Nhược điểm</th>
+                            <th>Xếp hạng độ tin cậy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Artificial Intelligence: A Modern Approach (Sách chuyên khảo) [cite: 18]</td>
+                            <td>Russell, S. & Norvig, P. (Pearson) [cite: 18]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Nền tảng lý thuyết AI chuẩn mực nhất, giải thích xác suất Bayes rất kỹ[cite: 18].<br>
+                                <span class="tag-con">Nhược:</span> Thiếu các case-study y khoa lâm sàng thực tế của những năm gần đây[cite: 18].
+                            </td>
+                            <td>Rất cao [cite: 18]</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>The Book of Why: The New Science of Cause and Effect (Sách chuyên khảo) [cite: 19]</td>
+                            <td>Pearl, J. (Basic Books) [cite: 19]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Tác giả là "cha đẻ" của mạng Bayes, cung cấp góc nhìn sâu sắc về suy luận nhân quả[cite: 19].<br>
+                                <span class="tag-con">Nhược:</span> Nặng về triết học và toán học, khó áp dụng ngay vào lập trình thực tế[cite: 19].
+                            </td>
+                            <td>Rất cao [cite: 19]</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Probabilistic machine learning and artificial intelligence (Bài báo khoa học) [cite: 19]</td>
+                            <td>Ghahramani, Z. (Nature) [cite: 19]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Đăng trên tạp chí top đầu thế giới, cung cấp cái nhìn toàn cảnh xuất sắc[cite: 19].<br>
+                                <span class="tag-con">Nhược:</span> Thời gian xuất bản khá lâu, chưa bao gồm các đột phá Học sâu mới nhất[cite: 19].
+                            </td>
+                            <td>Rất cao [cite: 19]</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>The role of artificial intelligence and Bayesian networks in medical diagnosis (Bài báo khoa học) [cite: 19]</td>
+                            <td>Kyzas, P. A. et al. (AI in Medicine) [cite: 19]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Đúng trọng tâm chuyên ngành y khoa, dữ liệu phong phú, qua bình duyệt khắt khe[cite: 19].<br>
+                                <span class="tag-con">Nhược:</span> Giới hạn phân tích ở một số nhóm bệnh lý cụ thể (như ung thư học)[cite: 19].
+                            </td>
+                            <td>Cao [cite: 19]</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>CareMap: A Framework for Inferring Expected Clinical Care Pathways (Bài báo khoa học) [cite: 19]</td>
+                            <td>McLachlan, S. et al. (IEEE Access) [cite: 19]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Đề xuất một framework rõ ràng cho đường hướng chăm sóc lâm sàng dựa trên Bayes[cite: 19].<br>
+                                <span class="tag-con">Nhược:</span> Phức tạp trong việc tích hợp với hệ thống y tế điện tử (EHR) cũ tại các bệnh viện[cite: 19].
+                            </td>
+                            <td>Cao [cite: 19]</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Leveraging uncertainty information from deep neural networks for disease detection (Bài báo khoa học) [cite: 19]</td>
+                            <td>Leibig, C. et al. (Scientific Reports) [cite: 19]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Đột phá trong việc dùng mạng nơ-ron Bayes để đánh giá "độ không chắc chắn" trong chẩn đoán y khoa[cite: 19].<br>
+                                <span class="tag-con">Nhược:</span> Chỉ tập trung vào dữ liệu chẩn đoán hình ảnh (ảnh võng mạc)[cite: 19].
+                            </td>
+                            <td>Rất cao [cite: 19]</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>A comprehensive survey on Bayesian inference in modern healthcare AI (Bài báo khoa học) [cite: 20]</td>
+                            <td>Wang, J. et al. (Journal of Biomedical Informatics) [cite: 20]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Tính cập nhật rất cao, tổng hợp được nhiều xu hướng sau đại dịch Covid-19[cite: 20].<br>
+                                <span class="tag-con">Nhược:</span> Số lượng trích dẫn còn thấp do thời gian xuất bản chưa lâu[cite: 20].
+                            </td>
+                            <td>Cao [cite: 20]</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Ethics and governance of artificial intelligence for health (Báo cáo / Nguồn mở rộng) [cite: 20]</td>
+                            <td>World Health Organization (WHO) [cite: 20]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Đảm bảo góc nhìn đạo đức và quy chuẩn quốc tế khi ứng dụng AI xác suất vào sức khỏe con người[cite: 20].<br>
+                                <span class="tag-con">Nhược:</span> Khung chính sách vĩ mô, không đi sâu vào kỹ thuật thiết kế mô hình[cite: 20].
+                            </td>
+                            <td>Cao [cite: 20]</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Transforming healthcare with AI (Báo cáo ngành / Mở rộng) [cite: 20]</td>
+                            <td>McKinsey & Company [cite: 20]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Phản ánh đúng xu hướng đầu tư thực tế của các tập đoàn y tế vào AI[cite: 20].<br>
+                                <span class="tag-con">Nhược:</span> Mang tính chất thương mại và chiến lược nhiều hơn là học thuật hàn lâm[cite: 20].
+                            </td>
+                            <td>Khá [cite: 20]</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>How AI is revolutionizing medical diagnostics (Internet / Báo điện tử) [cite: 20]</td>
+                            <td>MIT Technology Review [cite: 20]</td>
+                            <td>
+                                <span class="tag-pro">Ưu:</span> Ngôn ngữ dễ hiểu, cập nhật nhanh các dự án AI y tế mới nhất của giới hàn lâm[cite: 20].<br>
+                                <span class="tag-con">Nhược:</span> Tính học thuật không cao, mang tính chất tin tức, không qua bình duyệt[cite: 20].
+                            </td>
+                            <td>Trung bình [cite: 20]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="kanji-bg">結</div>
+            <h2>IV. Kết luận [cite: 21]</h2>
+            <p>Qua quá trình tìm kiếm, có thể thấy mạng Bayes và xác suất thống kê là xương sống của các mô hình AI trong y tế hiện đại, giúp giải quyết bài toán "hộp đen" (black-box) của Deep Learning[cite: 22]. Việc đánh giá nguồn thông tin cho thấy: các bài báo khoa học cung cấp nền tảng toán học chặt chẽ nhưng thường hẹp về phạm vi, trong khi sách chuyên khảo cung cấp kiến thức nền vững chắc[cite: 23]. Để nghiên cứu hiệu quả, cần kết hợp đối chiếu dữ liệu từ CSDL học thuật chuyên ngành và các báo cáo thực tiễn từ ngành công nghiệp[cite: 24].</p>
+            
+            <h3>V. Danh mục tài liệu tham khảo [cite: 25]</h3>
+            <ol>
+                <li>Bishop, C. M. (2006) Pattern Recognition and Machine Learning. New York: Springer. [cite: 26]</li>
+                <li>Gal, Y. (2016) Uncertainty in Deep Learning. PhD Thesis. University of Cambridge. [cite: 27]</li>
+                <li>Ghahramani, Z. (2015) 'Probabilistic machine learning and artificial intelligence', Nature, 521(7553), pp. 452-459. [cite: 28]</li>
+                <li>Kyzas, P. A. et al. (2021) 'The role of artificial intelligence and Bayesian networks in medical diagnosis', Artificial Intelligence in Medicine, 114, 102043. [cite: 29]</li>
+                <li>McLachlan, S. et al. (2020) 'CareMap: A Framework for Inferring Expected Clinical Care Pathways', IEEE Access, 8, pp. 200441-200456. [cite: 30]</li>
+                <li>McKinsey & Company. (2022) Transforming healthcare with Al: The impact on the workforce and organizations. [Online]. [cite: 31] Có sẵn tại: [mckinsey.com] (Truy cập: 22 tháng 3 năm 2026). [cite: 32]</li>
+                <li>MIT Technology Review. (2023) How Al is revolutionizing medical diagnostics. [cite: 33] [Online]. Có sẵn tại: [technologyreview.com] (Truy cập: 22 tháng 3 năm 2026). [cite: 34]</li>
+                <li>Pearl, J. (2018) The Book of Why: The New Science of Cause and Effect. New York: Basic Books. [cite: 35]</li>
+                <li>Russell, S. and Norvig, P. (2020) Artificial Intelligence: A Modern Approach. 4th edn. Pearson. [cite: 36]</li>
+                <li>Wang, J., Liu, H. and Chen, X. (2023) 'A comprehensive survey on Bayesian inference in modern healthcare AI', Journal of Biomedical Informatics, 138, 104289. [cite: 37]</li>
+                <li>World Health Organization (WHO). (2021) Ethics and governance of artificial intelligence for health. Geneva: World Health Organization. [cite: 38]</li>
+            </ol>
+        </section>
+    </div>
+    <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>
+</body>
+</html>
         </section>
 
         <section class="content-section">
