@@ -19,8 +19,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif JP', 'Segoe UI', Georgia, serif; }
         body { background-color: var(--washi); color: var(--dark); line-height: 1.75; }
 
-        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
-        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; }
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; letter-spacing: 0.5px; }
         .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
 
@@ -29,26 +29,46 @@
         .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
         .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; }
         .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
+        .meta-grid span { font-weight: 600; color: var(--dark); }
+
         .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
         .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
         h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
-        p, ul, ol { position: relative; z-index: 1; }
+        p, ul, ol { position: relative; z-index: 1; color: #334155; }
         p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; text-align: justify; }
+
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; position: relative; z-index: 1; }
         .tool-card { background: #f8fafc; border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; transition: transform 0.2s; }
         .tool-card:hover { transform: translateY(-5px); }
-        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-        .gallery-item { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; }
+        .tool-card h4 { margin-bottom: 0.5rem; color: var(--dark); font-size: 1.1rem; }
+
+        /* CSS thiết lập bảng nhật ký dùng AI */
+        .table-responsive { overflow-x: auto; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); position: relative; z-index: 1; }
+        table { width: 100%; min-width: 800px; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: white; }
+        th, td { padding: 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+        th:last-child, td:last-child { border-right: none; }
+        th { background-color: #f1f5f9; color: var(--dark); font-weight: 700; }
+        code { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.85rem; display: block; white-space: pre-wrap; color: #b91c1c; }
+
+        /* CSS Gallery chống tràn và lồng ảnh */
+        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; position: relative; z-index: 1; }
+        .gallery-item { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
         .gallery-item.full-width { grid-column: 1 / -1; }
-        .gallery-item img { max-width: 100%; border-radius: 6px; }
+        .gallery-item img { max-width: 100%; height: auto; border-radius: 6px; display: block; margin: 0 auto; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .image-caption { font-size: 0.85rem; margin-top: 0.75rem; font-style: italic; color: var(--slate); }
-        .ethics-box { background-color: #fff1f2; border-left: 4px solid var(--primary); padding: 1.5rem; margin: 1.5rem 0; color: #881337; }
+        
+        .ethics-box { background-color: #fff1f2; border-left: 4px solid var(--primary); padding: 1.5rem; margin: 1.5rem 0; color: #881337; position: relative; z-index: 1; border-radius: 0 8px 8px 0; }
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+        
         @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 0.75rem; }
+            .navbar { flex-direction: column; gap: 0.75rem; padding: 1rem; }
             .nav-links a { margin: 0 0.5rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .container { margin: 1.5rem auto; }
+            .report-header, .content-section { padding: 1.75rem; }
+            .report-header h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -58,54 +78,139 @@
         <div class="nav-links">
             <a href="index.html">己 紹介</a><a href="bai1.html">整 1</a><a href="bai2.html">索 2</a>
             <a href="bai3.html">問 3</a><a href="bai4.html">協 4</a>
-            <a href="bai5.html" class="active">創 5</a><a href="bai6.html">正 6</a><a href="tongket.html">省 総括</a>
+            <a href="bai5.html" class="active">創 5</a><a href="bai6.html">正 6</a><a href="tongket.html">省 Tổng quát</a>
         </div>
     </nav>
     <div class="container">
         <header class="report-header">
             <h1>BÁO CÁO DỰ ÁN: SÁNG TẠO NỘI DUNG SỐ VỚI CÔNG CỤ TRÍ TUỆ NHÂN TẠO</h1>
             <div class="meta-grid">
-                <div><span>Sinh viên:</span> Bùi Lê Minh</div><div><span>MSSV:</span> 25021868</div>
-                <div><span>Chiến dịch:</span> Hà Nội - Hành trình Xanh 2026</div><div><span>Ngày:</span> 01/05/2026</div>
+                <div><span>Sinh viên:</span> Bùi Lê Minh</div>
+                <div><span>MSSV:</span> 25021868</div>
+                <div><span>Chiến dịch:</span> Hà Nội - Hành trình Xanh 2026</div>
+                <div><span>Ngày thực hiện:</span> 01/05/2026</div>
             </div>
         </header>
 
         <section class="content-section">
             <div class="kanji-bg">創</div>
-            <h2>I. 創 — Giới thiệu Dự án Truyền thông</h2>
-            <p><strong>Mục tiêu:</strong> Lan tỏa thông điệp du lịch bền vững, giảm rác thải nhựa tại Hà Nội. <strong>Sản phẩm:</strong> 01 bài blog chuyên sâu + 02 Poster truyền thông.</p>
+            <h2>I. GIỚI THIỆU DỰ ÁN</h2>
+            <p><strong>Tên dự án:</strong> Chiến dịch truyền thông "Hà Nội - Hành trình Xanh 2026"</p>
+            <p><strong>Mục tiêu:</strong> Tạo ra bộ nội dung đa phương tiện (Bài viết blog và Poster) nhằm khuyến khích du lịch bền vững và giảm thiểu rác thải nhựa tại thành phố Hà Nội.</p>
+            <p><strong>Sản phẩm cuối cùng:</strong> Một bài viết chuyên sâu trên Blog du lịch kèm theo 02 Poster truyền thông chất lượng cao.</p>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">具</div>
-            <h2>II. Hệ sinh thái Công cụ AI tạo sinh</h2>
+            <h2>II. DANH SÁCH CÁC CÔNG CỤ AI SỬ DỤNG</h2>
+            <p>Để hoàn thiện dự án này, tôi đã lựa chọn và phối hợp sử dụng 03 công cụ AI hàng đầu hiện nay nhằm tối ưu hóa từng khâu trong quy trình sản xuất nội dung số:</p>
             <div class="tools-grid">
-                <div class="tool-card"><h4>📝 Google Gemini</h4><p>Lên ý tưởng, dàn ý, viết bản thảo blog.</p></div>
-                <div class="tool-card"><h4>🎨 Nano Banana</h4><p>Tạo hình ảnh photorealistic (Text-to-Image).</p></div>
-                <div class="tool-card"><h4>✨ Canva Magic Design</h4><p>Nhận diện màu sắc, bố cục, typography.</p></div>
+                <div class="tool-card">
+                    <h4>📝 Google Gemini</h4>
+                    <p><strong>AI tạo văn bản:</strong> Sử dụng để lên ý tưởng độc đáo, thiết lập cấu trúc dàn ý chi tiết và tiến hành viết bản thảo nội dung thô cho bài viết blog.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>🎨 Nano Banana</h4>
+                    <p><strong>AI tạo hình ảnh:</strong> Sử dụng để xử lý câu lệnh chuyển văn bản thành hình ảnh (Text-to-Image), kiến tạo các hình ảnh thị giác (Key Visual) mang tính nghệ thuật, chân thực và độc bản.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>✨ Canva AI / Magic Design</h4>
+                    <p><strong>AI hỗ trợ thiết kế:</strong> Sử dụng để tự động sắp xếp bố cục đồ họa, đề xuất các palette màu sắc phù hợp định hướng và hoàn thiện sản phẩm truyền thông cuối cùng.</p>
+                </div>
             </div>
+        </section>
+
+        <section class="content-section">
+            <div class="kanji-bg">録</div>
+            <h2>III. NHẬT KÝ QUÁ TRÌNH SỬ DỤNG AI</h2>
+            <p>Dưới đây là bảng tổng hợp chi tiết các câu lệnh (prompts) đã áp dụng, kết quả nhận diện từ AI và quá trình chủ động chỉnh sửa, tinh chỉnh thủ công để đạt tính thẩm mỹ cao nhất:</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 18%;">Bước thực hiện</th>
+                            <th style="width: 18%;">Công cụ</th>
+                            <th style="width: 34%;">Câu lệnh (Prompt) đã dùng</th>
+                            <th style="width: 30%;">Kết quả từ AI & Chỉnh sửa của cá nhân</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Lên ý tưởng & Dàn ý</strong></td>
+                            <td>Google Gemini</td>
+                            <td><em>"Hãy đóng vai chuyên gia du lịch bền vững, lập dàn ý cho bài blog 'Hà Nội không rác thải nhựa'. Cần tập trung vào trải nghiệm thực tế và giải pháp cho du khách."</em></td>
+                            <td>AI đưa ra hệ thống gồm 6 mục lớn. Tôi đánh giá tính khả thi và quyết định tinh giản loại bỏ phần số 5 liên quan đến mua sắm để tập trung sâu hơn vào trải nghiệm thực tế tại địa phương.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sáng tạo hình ảnh</strong></td>
+                            <td>Nano Banana</td>
+                            <td><code>A candid, close-up photograph capturing a sustainable traveler's reusable setup on a worn wooden table in a busy Hanoi cafe. Center frame is a branded steel water bottle (minimalist 'Hanoi Xanh' sticker) and a folded cloth tote bag. In the blurred background, a glass cup of traditional Vietnamese egg coffee sits near a window. Sunlight streams in. 35mm photography, film grain, warm tones, natural light, photojournalism style, high detail. --ar 16:9</code></td>
+                            <td>AI khởi tạo thành công bộ gồm 4 bức ảnh. Tôi chọn bức ảnh số 1 có bố cục chuẩn nét nhất, tuy nhiên gam màu gốc hơi bị rực quá mức. Tôi đã đưa ảnh vào ứng dụng Photopea để giảm độ bão hòa (thông số Saturation: -13) giúp tổng thể dịu mắt và cổ kính hơn.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thiết kế Poster</strong></td>
+                            <td>Canva Magic Design</td>
+                            <td>Tải hình ảnh đã tinh chỉnh lên hệ thống và yêu cầu: <em>"Thiết kế poster phong cách tối giản với thông điệp: Hà Nội Xanh."</em></td>
+                            <td>Hệ thống tự động nhận diện khối, sắp xếp văn bản tự động để sinh mẫu. Tôi chọn ra một khuôn mẫu ưng ý nhất, tiến hành thay thế toàn bộ font chữ mặc định của AI sang font hiện đại 'Montserrat', đồng thời viết lại nội dung truyền tải theo đúng ý đồ của mình.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="kanji-bg">析</div>
+            <h2>IV. SO SÁNH VÀ PHÂN TÍCH CÁC CÔNG CỤ AI</h2>
+            <p>Việc trực tiếp ứng dụng song hành nhiều nền tảng bổ trợ cho nhau trong dự án cho phép tôi đưa ra những đánh giá khách quan về ưu thế và giới hạn của từng công cụ:</p>
+            <ul>
+                <li><strong>Về hiệu quả tạo văn bản (Gemini):</strong> Sở hữu năng lực nắm bắt tư duy văn hóa và ngữ cảnh địa phương (đặc thù Hà Nội) tương đối mượt mà, văn phong diễn đạt tự nhiên. Dù vậy, người dùng bắt buộc phải đối soát thủ công lại toàn bộ thông tin về tọa độ, tuyến đường hay địa điểm để triệt tiêu lỗi ảo tưởng (hallucination).</li>
+                <li><strong>Về hiệu quả hình ảnh (Nano Banana):</strong> Đạt hiệu suất cực kỳ ấn tượng trong việc tạo lập ảnh mang hơi hướng nhiếp ảnh thực tế (photorealistic). Điểm cộng lớn là khả năng giữ vững tính nhất quán của vật thể cốt lõi (nhãn "Hanoi Xanh" trên bình inox) xuyên suốt nhiều góc nhìn — điều các AI khác rất dễ làm sai lệch. Nhược điểm duy nhất là đòi hỏi prompt phải mô tả kỹ nghệ ánh sáng và thông số máy ảnh cực kỳ chi tiết.</li>
+                <li><strong>Về hỗ trợ thiết kế (Canva):</strong> Chức năng phân bổ khối và tự động căn chỉnh giúp tối ưu hóa, tiết kiệm lên đến 60% thời gian dàn trang thông thường. Tuy nhiên, AI này chỉ dừng lại ở mức hỗ trợ căn bản, hoàn toàn không thể thay thế tư duy nghệ thuật của con người ở khâu xử lý điểm nhấn kiểu chữ (typography) và bố cục nâng cao.</li>
+            </ul>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">人</div>
-            <h2>III. Quy trình Đồng sáng tạo (Human-AI Collaboration)</h2>
-            <p><strong>Đóng góp cá nhân (>60%):</strong></p>
-            <ul>
-                <li><strong>Tham số hình ảnh:</strong> Prompt chi tiết (<em>35mm film, warm tones, cinematic lighting</em>) tạo phong cách "Hà Nội hoài cổ".</li>
-                <li><strong>Kiểm chứng dữ liệu:</strong> Đối soát thủ công thông tin địa lý, văn hóa, loại trừ hallucination.</li>
-                <li><strong>Chỉ đạo nghệ thuật:</strong> Bố cục, nhịp độ bài viết, vị trí đặt poster hoàn toàn do con người quyết định.</li>
-            </ul>
-            <div class="ethics-box"><strong>🛡️ Cam kết Đạo đức:</strong> Mọi hình ảnh AI sinh ra đều gắn nhãn: <em>"Hình ảnh minh họa được tạo bởi AI"</em> để đảm bảo minh bạch, không gây hiểu lầm.</div>
+            <h2>V. SẢN PHẨM CUỐI CÙNG VÀ ĐÓNG GÓP CÁ NHÂN</h2>
+            <p>Sản phẩm truyền thông hoàn thiện hoàn toàn không phải là sự sao chép rập khuôn, mà là kết quả của mô hình đồng sáng tạo (Human-AI Collaboration), trong đó <strong>đóng góp cá nhân của con người chiếm giữ vai trò quyết định (>60%)</strong> thông qua các khía cạnh:</p>
+            <ol>
+                <li><strong>Kiểm chứng nội dung nghiêm ngặt:</strong> Toàn bộ hệ thống dữ liệu địa lý, danh lam thắng cảnh và văn hóa Hà Nội trong bài viết đều được tôi kiểm tra chéo thủ công để đảm bảo tính chuẩn xác tuyệt đối trước khi công bố.</li>
+                <li><strong>Chỉ đạo nghệ thuật chặt chẽ (Art Direction):</strong> Toàn bộ cấu trúc câu lệnh hình ảnh gửi đến Nano Banana đều do tôi lên kịch bản, tự tay làm chủ thông số nghệ thuật (<em>35mm film, warm tones, cinematic lighting</em>) để xây dựng hệ thống concept hình ảnh "Hà Nội hoài cổ" đồng điệu.</li>
+                <li><strong>Cá nhân hóa thiết kế đồ họa:</strong> Việc phân chia bố cục, sắp đặt nhịp điệu chữ viết, căn chỉnh dải màu poster và thiết lập vị trí hiển thị hình ảnh hoàn toàn tuân theo dụng ý nghệ thuật của riêng cá nhân tôi.</li>
+            </ol>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="hinh_bai5_poster1.png" alt="Poster 1" onerror="this.src='https://via.placeholder.com/600x800.png'">
+                    <div class="image-caption">Poster 01: "Góc phố Xanh" - Canva Magic Design kết hợp hiệu chỉnh chữ</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="hinh_bai5_poster2.png" alt="Poster 2" onerror="this.src='https://via.placeholder.com/600x800.png'">
+                    <div class="image-caption">Poster 02: "Di sản Bền vững" - Thiết kế tối giản tối ưu nhận diện</div>
+                </div>
+                <div class="gallery-item full-width">
+                    <img src="hinh_bai5_blog.png" alt="Blog" onerror="this.src='https://via.placeholder.com/1200x600.png'">
+                    <div class="image-caption">Giao diện bài viết Blog du lịch: Lên dàn ý bởi Gemini, kiến tạo hình ảnh minh họa bởi Nano Banana và tinh chỉnh hậu kỳ Photopea</div>
+                </div>
+            </div>
         </section>
 
         <section class="content-section">
-            <div class="kanji-bg">美</div>
-            <h2>IV. Không gian Trưng bày Sản phẩm</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="hinh_bai5_poster1.png" alt="Poster 1" onerror="this.src='https://via.placeholder.com/600x800.png'"><div class="image-caption">Poster 01: "Góc phố Xanh"</div></div>
-                <div class="gallery-item"><img src="hinh_bai5_poster2.png" alt="Poster 2" onerror="this.src='https://via.placeholder.com/600x800.png'"><div class="image-caption">Poster 02: "Di sản Bền vững"</div></div>
-                <div class="gallery-item full-width"><img src="hinh_bai5_blog.png" alt="Blog" onerror="this.src='https://via.placeholder.com/1200x600.png'"><div class="image-caption">Bài viết Blog được lên dàn ý bởi Gemini, minh họa bởi Nano Banana</div></div>
+            <div class="kanji-bg">正</div>
+            <h2>VI. PHÂN TÍCH VAI TRÒ CỦA AI VÀ VẤN ĐỀ ĐẠO ĐỨC</h2>
+            <p><strong>Sự cải tiến mạnh mẽ trong quy trình:</strong> Thay vì tiêu tốn hàng giờ đồng hồ tìm kiếm mệt mỏi các kho ảnh có sẵn (stock photos) trên mạng internet vốn chung chung và không sát kịch bản, Nano Banana trao quyền cho nhà sáng tạo tự "chụp" ra các bức ảnh trực họa chuẩn xác 100% ý tưởng trong đầu, giúp rút ngắn tối đa thời gian sản xuất nội dung số.</p>
+            
+            <div class="ethics-box">
+                <strong>🛡️ Cam kết Nguyên tắc Đạo đức nghề nghiệp:</strong> Dù hình ảnh đồ họa do trí tuệ nhân tạo tạo ra có độ chân thực và sống động tương đương ảnh chụp đời thực, tôi cam kết thực hiện đầy đủ trách nhiệm minh bạch hóa thông tin bằng cách gắn nhãn rõ ràng dưới mỗi tác phẩm: <em>"Hình ảnh minh họa trong bài viết được tạo bởi AI"</em>. Việc này giúp ngăn chặn triệt để mọi hành vi gây hiểu lầm cho người tiếp cận thông tin rằng đây là ảnh chụp báo chí/phóng sự thực tế. Bên cạnh đó, việc chủ động rà soát loại bỏ lỗi Hallucination từ Gemini luôn là tôn chỉ đạo đức được đặt lên hàng đầu.
             </div>
+        </section>
+
+        <section class="content-section">
+            <div class="kanji-bg">結</div>
+            <h2>VII. KẾT LUẬN</h2>
+            <p>Việc làm chủ và tối ưu hóa năng lực từ các công cụ Generative AI tiên tiến không đơn thuần chỉ dừng lại ở kỹ năng gõ câu lệnh prompt một cách cơ học, mà cốt lõi nằm ở khả năng điều phối, kết nối tinh tế các hệ sinh thái công nghệ khác nhau nhằm tạo ra những giá trị mới mẻ.</p>
+            <p>Chiến dịch truyền thông đầy ý nghĩa mang tên "Hà Nội - Hành trình Xanh 2026" là minh chứng thực tế rõ nét khẳng định: AI hoàn toàn có thể trở thành đòn bẩy nâng tầm năng lực sáng tạo vô hạn của cá nhân, miễn là chúng ta nắm vững thế chủ động kiểm soát và khéo léo lồng ghép dấu ấn cá nhân sâu sắc vào từng đường nét sản phẩm.</p>
         </section>
     </div>
     <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>
