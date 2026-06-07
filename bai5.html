@@ -24,16 +24,18 @@
         .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
 
-        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
         .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; overflow: hidden; }
         .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
-        .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; }
+        .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; text-transform: uppercase; }
         .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
         .meta-grid span { font-weight: 600; color: var(--dark); }
 
         .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
         .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
-        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
+        
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; text-transform: uppercase; letter-spacing: 0.5px; }
+        h4 { color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem; }
         p, ul, ol { position: relative; z-index: 1; color: #334155; }
         p { margin-bottom: 1.2rem; text-align: justify; }
         ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
@@ -42,22 +44,25 @@
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; position: relative; z-index: 1; }
         .tool-card { background: #f8fafc; border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; transition: transform 0.2s; }
         .tool-card:hover { transform: translateY(-5px); }
-        .tool-card h4 { margin-bottom: 0.5rem; color: var(--dark); font-size: 1.1rem; }
 
         /* CSS thiết lập bảng nhật ký dùng AI */
         .table-responsive { overflow-x: auto; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); position: relative; z-index: 1; }
-        table { width: 100%; min-width: 800px; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: white; }
-        th, td { padding: 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+        table { width: 100%; min-width: 850px; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: white; }
+        th, td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
         th:last-child, td:last-child { border-right: none; }
         th { background-color: #f1f5f9; color: var(--dark); font-weight: 700; }
-        code { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.85rem; display: block; white-space: pre-wrap; color: #b91c1c; }
+        code { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.85rem; display: block; white-space: pre-wrap; color: #b91c1c; line-height: 1.4; border: 1px solid #e2e8f0; }
 
-        /* CSS Gallery chống tràn và lồng ảnh */
-        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; position: relative; z-index: 1; }
-        .gallery-item { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
-        .gallery-item.full-width { grid-column: 1 / -1; }
-        .gallery-item img { max-width: 100%; height: auto; border-radius: 6px; display: block; margin: 0 auto; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .image-caption { font-size: 0.85rem; margin-top: 0.75rem; font-style: italic; color: var(--slate); }
+        /* CSS Gallery cải tiến - Sắp xếp ảnh dọc và ảnh ngang hài hòa */
+        .gallery-grid { display: grid; grid-template-columns: 45% 55%; gap: 1.5rem; margin: 2rem 0; position: relative; z-index: 1; align-items: start; }
+        .gallery-item { background: #f8fafc; padding: 1.25rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .gallery-item img { max-width: 100%; height: auto; border-radius: 6px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.06); background: white; }
+        
+        /* Tối ưu hiển thị cho từng kiểu ảnh */
+        .img-vertical { max-height: 480px; object-fit: contain; }
+        .img-horizontal { max-height: 320px; object-fit: contain; margin-top: auto; margin-bottom: auto; }
+        
+        .image-caption { font-size: 0.85rem; margin-top: 1rem; font-style: italic; color: var(--slate); font-weight: 500; line-height: 1.4; }
         
         .ethics-box { background-color: #fff1f2; border-left: 4px solid var(--primary); padding: 1.5rem; margin: 1.5rem 0; color: #881337; position: relative; z-index: 1; border-radius: 0 8px 8px 0; }
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
@@ -65,10 +70,11 @@
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 0.75rem; padding: 1rem; }
             .nav-links a { margin: 0 0.5rem; }
-            .gallery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; gap: 2rem; }
             .container { margin: 1.5rem auto; }
             .report-header, .content-section { padding: 1.75rem; }
-            .report-header h1 { font-size: 1.6rem; }
+            .report-header h1 { font-size: 1.5rem; }
+            .img-vertical, .img-horizontal { max-height: none; }
         }
     </style>
 </head>
@@ -76,14 +82,19 @@
     <nav class="navbar">
         <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
         <div class="nav-links">
-            <a href="index.html">己 紹介</a><a href="bai1.html">整 1</a><a href="bai2.html">索 2</a>
-            <a href="bai3.html">問 3</a><a href="bai4.html">協 4</a>
-            <a href="bai5.html" class="active">創 5</a><a href="bai6.html">正 6</a><a href="tongket.html">省 Tổng quát</a>
+            <a href="index.html">己 紹介</a>
+            <a href="bai1.html">整 1</a>
+            <a href="bai2.html">索 2</a>
+            <a href="bai3.html">問 3</a>
+            <a href="bai4.html">協 4</a>
+            <a href="bai5.html" class="active">創 5</a>
+            <a href="bai6.html">正 6</a>
+            <a href="tongket.html">省 総括</a>
         </div>
     </nav>
     <div class="container">
         <header class="report-header">
-            <h1>BÁO CÁO DỰ ÁN: SÁNG TẠO NỘI DUNG SỐ VỚI CÔNG CỤ TRÍ TUỆ NHÂN TẠO</h1>
+            <h1>Báo cáo dự án: Sáng tạo nội dung số với công cụ Trí tuệ nhân tạo</h1>
             <div class="meta-grid">
                 <div><span>Sinh viên:</span> Bùi Lê Minh</div>
                 <div><span>MSSV:</span> 25021868</div>
@@ -94,7 +105,7 @@
 
         <section class="content-section">
             <div class="kanji-bg">創</div>
-            <h2>I. GIỚI THIỆU DỰ ÁN</h2>
+            <h2>I. Giới thiệu dự án</h2>
             <p><strong>Tên dự án:</strong> Chiến dịch truyền thông "Hà Nội - Hành trình Xanh 2026"</p>
             <p><strong>Mục tiêu:</strong> Tạo ra bộ nội dung đa phương tiện (Bài viết blog và Poster) nhằm khuyến khích du lịch bền vững và giảm thiểu rác thải nhựa tại thành phố Hà Nội.</p>
             <p><strong>Sản phẩm cuối cùng:</strong> Một bài viết chuyên sâu trên Blog du lịch kèm theo 02 Poster truyền thông chất lượng cao.</p>
@@ -102,7 +113,7 @@
 
         <section class="content-section">
             <div class="kanji-bg">具</div>
-            <h2>II. DANH SÁCH CÁC CÔNG CỤ AI SỬ DỤNG</h2>
+            <h2>II. Danh sách các công cụ AI sử dụng</h2>
             <p>Để hoàn thiện dự án này, tôi đã lựa chọn và phối hợp sử dụng 03 công cụ AI hàng đầu hiện nay nhằm tối ưu hóa từng khâu trong quy trình sản xuất nội dung số:</p>
             <div class="tools-grid">
                 <div class="tool-card">
@@ -122,7 +133,7 @@
 
         <section class="content-section">
             <div class="kanji-bg">録</div>
-            <h2>III. NHẬT KÝ QUÁ TRÌNH SỬ DỤNG AI</h2>
+            <h2>III. Nhật ký quá trình sử dụng AI</h2>
             <p>Dưới đây là bảng tổng hợp chi tiết các câu lệnh (prompts) đã áp dụng, kết quả nhận diện từ AI và quá trình chủ động chỉnh sửa, tinh chỉnh thủ công để đạt tính thẩm mỹ cao nhất:</p>
             
             <div class="table-responsive">
@@ -161,7 +172,7 @@
 
         <section class="content-section">
             <div class="kanji-bg">析</div>
-            <h2>IV. SO SÁNH VÀ PHÂN TÍCH CÁC CÔNG CỤ AI</h2>
+            <h2>IV. So sánh và phân tích các công cụ AI</h2>
             <p>Việc trực tiếp ứng dụng song hành nhiều nền tảng bổ trợ cho nhau trong dự án cho phép tôi đưa ra những đánh giá khách quan về ưu thế và giới hạn của từng công cụ:</p>
             <ul>
                 <li><strong>Về hiệu quả tạo văn bản (Gemini):</strong> Sở hữu năng lực nắm bắt tư duy văn hóa và ngữ cảnh địa phương (đặc thù Hà Nội) tương đối mượt mà, văn phong diễn đạt tự nhiên. Dù vậy, người dùng bắt buộc phải đối soát thủ công lại toàn bộ thông tin về tọa độ, tuyến đường hay địa điểm để triệt tiêu lỗi ảo tưởng (hallucination).</li>
@@ -172,7 +183,7 @@
 
         <section class="content-section">
             <div class="kanji-bg">人</div>
-            <h2>V. SẢN PHẨM CUỐI CÙNG VÀ ĐÓNG GÓP CÁ NHÂN</h2>
+            <h2>V. Sản phẩm cuối cùng và đóng góp cá nhân</h2>
             <p>Sản phẩm truyền thông hoàn thiện hoàn toàn không phải là sự sao chép rập khuôn, mà là kết quả của mô hình đồng sáng tạo (Human-AI Collaboration), trong đó <strong>đóng góp cá nhân của con người chiếm giữ vai trò quyết định (>60%)</strong> thông qua các khía cạnh:</p>
             <ol>
                 <li><strong>Kiểm chứng nội dung nghiêm ngặt:</strong> Toàn bộ hệ thống dữ liệu địa lý, danh lam thắng cảnh và văn hóa Hà Nội trong bài viết đều được tôi kiểm tra chéo thủ công để đảm bảo tính chuẩn xác tuyệt đối trước khi công bố.</li>
@@ -180,17 +191,22 @@
                 <li><strong>Cá nhân hóa thiết kế đồ họa:</strong> Việc phân chia bố cục, sắp đặt nhịp điệu chữ viết, căn chỉnh dải màu poster và thiết lập vị trí hiển thị hình ảnh hoàn toàn tuân theo dụng ý nghệ thuật của riêng cá nhân tôi.</li>
             </ol>
 
+            <!-- Khối hiển thị 2 ảnh cạnh nhau: 1 dọc (Poster) và 1 ngang (Ảnh Blog) -->
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="bai5_1.png" alt="Poster" onerror="this.src='https://via.placeholder.com/600x800.png'">
-                    <div class="image-caption">Poster: "Góc phố Xanh" - Canva Magic Design kết hợp hiệu chỉnh chữ</div>
+                    <img src="bai5_1.png" class="img-vertical" alt="Poster truyền thông Hà Nội Xanh dạng dọc" onerror="this.src='https://via.placeholder.com/600x800.png?text=Poster+Doc+Canva'">
+                    <div class="image-caption">Hình 5.1: Poster truyền thông "Góc phố Xanh" (Khổ dọc) - Được dàn dựng qua Canva Magic Design và cá nhân hóa Typography</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="bai5_2.png" class="img-horizontal" alt="Ảnh minh họa bài viết blog dạng ngang" onerror="this.src='https://via.placeholder.com/800x450.png?text=Anh+Blog+Ngang+16:9'">
+                    <div class="image-caption">Hình 5.2: Ảnh minh họa bài viết Blog (Khổ ngang tỉ lệ 16:9) - Khởi tạo từ Nano Banana AI và xử lý hậu kỳ giảm bão hòa màu bằng Photopea</div>
                 </div>
             </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">正</div>
-            <h2>VI. PHÂN TÍCH VAI TRÒ CỦA AI VÀ VẤN ĐỀ ĐẠO ĐỨC</h2>
+            <h2>VI. Phân tích vai trò của AI và vấn đề đạo đức</h2>
             <p><strong>Sự cải tiến mạnh mẽ trong quy trình:</strong> Thay vì tiêu tốn hàng giờ đồng hồ tìm kiếm mệt mỏi các kho ảnh có sẵn (stock photos) trên mạng internet vốn chung chung và không sát kịch bản, Nano Banana trao quyền cho nhà sáng tạo tự "chụp" ra các bức ảnh trực họa chuẩn xác 100% ý tưởng trong đầu, giúp rút ngắn tối đa thời gian sản xuất nội dung số.</p>
             
             <div class="ethics-box">
@@ -200,7 +216,7 @@
 
         <section class="content-section">
             <div class="kanji-bg">結</div>
-            <h2>VII. KẾT LUẬN</h2>
+            <h2>VII. Kết luận</h2>
             <p>Việc làm chủ và tối ưu hóa năng lực từ các công cụ Generative AI tiên tiến không đơn thuần chỉ dừng lại ở kỹ năng gõ câu lệnh prompt một cách cơ học, mà cốt lõi nằm ở khả năng điều phối, kết nối tinh tế các hệ sinh thái công nghệ khác nhau nhằm tạo ra những giá trị mới mẻ.</p>
             <p>Chiến dịch truyền thông đầy ý nghĩa mang tên "Hà Nội - Hành trình Xanh 2026" là minh chứng thực tế rõ nét khẳng định: AI hoàn toàn có thể trở thành đòn bẩy nâng tầm năng lực sáng tạo vô hạn của cá nhân, miễn là chúng ta nắm vững thế chủ động kiểm soát và khéo léo lồng ghép dấu ấn cá nhân sâu sắc vào từng đường nét sản phẩm.</p>
         </section>
