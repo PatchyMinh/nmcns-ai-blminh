@@ -19,39 +19,49 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Serif JP', 'Segoe UI', Georgia, serif; }
         body { background-color: var(--washi); color: var(--dark); line-height: 1.75; }
 
-        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
-        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; }
+        .navbar { background-color: var(--dark); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); backdrop-filter: blur(4px); background-color: rgba(26,26,26,0.9); }
+        .nav-logo { color: var(--primary); font-weight: 700; font-size: 1.25rem; text-decoration: none; border: 1px solid var(--primary); padding: 0.2rem 0.8rem; letter-spacing: 0.5px; }
         .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
 
-        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; position: relative; }
         .report-header { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; overflow: hidden; }
         .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
         .report-header h1 { color: var(--dark); font-size: 2rem; line-height: 1.3; margin-bottom: 1.5rem; text-transform: uppercase; }
         .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
+        .meta-item span { font-weight: 600; color: var(--dark); }
+
         .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
         .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
-        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
-        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; position: relative; z-index: 1; }
+        
+        h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; text-transform: uppercase; letter-spacing: 0.5px; }
+        h3 { color: #1e293b; font-size: 1.2rem; margin: 2rem 0 0.75rem 0; position: relative; z-index: 1; border-bottom: 1px dashed var(--border); padding-bottom: 0.25rem; }
+        
         p, ul, ol, .table-responsive { position: relative; z-index: 1; }
         p { margin-bottom: 1.2rem; text-align: justify; color: #334155; }
         ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #334155; }
         li { margin-bottom: 0.5rem; }
         strong { color: var(--dark); }
-        .image-wrapper { background: #f1f5f9; padding: 1rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; position: relative; z-index: 1;}
-        .image-caption { font-size: 0.85rem; color: var(--slate); margin-top: 0.75rem; font-style: italic; }
-        .table-responsive { overflow-x: auto; margin: 1.5rem 0; border-radius: 8px; border: 1px solid var(--border); position: relative; z-index: 1;}
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: white; }
-        th, td { padding: 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+        
+        .image-wrapper { background: #f8fafc; padding: 1.25rem; border-radius: 12px; border: 1px dashed #cbd5e1; text-align: center; margin: 2rem 0; position: relative; z-index: 1; }
+        .image-wrapper img { max-width: 85%; width: 100%; height: auto; max-height: 450px; object-fit: contain; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); background: white; }
+        .image-caption { font-size: 0.85rem; color: var(--slate); margin-top: 0.75rem; font-style: italic; font-weight: 500; }
+        
+        .table-responsive { overflow-x: auto; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        table { width: 100%; min-width: 850px; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: white; }
+        th, td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
         th:last-child, td:last-child { border-right: none; }
-        th { background-color: #f8fafc; font-weight: 700; color: var(--dark); }
+        th { background-color: #f1f5f9; font-weight: 700; color: var(--dark); }
+        
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+        
         @media (max-width: 768px) {
             .navbar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
             .nav-links a { margin: 0 0.5rem; }
             .container { margin: 1.5rem auto; }
             .report-header, .content-section { padding: 1.75rem; }
-            .report-header h1 { font-size: 1.6rem; }
+            .report-header h1 { font-size: 1.5rem; }
+            .image-wrapper img { max-width: 100%; }
         }
     </style>
 </head>
@@ -73,23 +83,23 @@
         <header class="report-header">
             <h1>Báo cáo cá nhân: Vai trò và Trải nghiệm trong Dự án Nhóm trực tuyến</h1>
             <div class="meta-grid">
-                <div><span>Sinh viên:</span> Bùi Lê Minh</div>
-                <div><span>MSSV:</span> 25021868</div>
-                <div><span>Vai trò:</span> Trưởng nhóm</div>
-                <div><span>Dự án:</span> Xây dựng nội dung cho bài Giữa kì</div>
+                <div class="meta-item"><span>Sinh viên:</span> Bùi Lê Minh</div>
+                <div class="meta-item"><span>MSSV:</span> 25021868</div>
+                <div class="meta-item"><span>Vai trò:</span> Trưởng nhóm</div>
+                <div class="meta-item"><span>Dự án:</span> Xây dựng nội dung cho bài Giữa kì</div>
             </div>
         </header>
 
         <section class="content-section">
             <div class="kanji-bg">協</div>
             <h2>I. Giới thiệu chung</h2>
-            <p>Trong bối cảnh làm việc hiện đại, khả năng sử dụng các công cụ hợp tác trực tuyến là yếu tố then chốt quyết định hiệu quả của một dự án nhóm. Trong một tuần triển khai dự án nhỏ vừa qua, cá nhân tôi đã tham gia với vai trò <strong>Trưởng nhóm</strong>, chịu trách nhiệm chính về quản lý, đốc thúc thành viên làm việc, và kiểm duyệt nội dung.</p>
-            <p>Báo cáo này tập trung vào việc phân tích trải nghiệm cá nhân, cách thức thiết lập và tối ưu hóa các công cụ kỹ thuật số để phục vụ mục tiêu chung của nhóm. Các công cụ tôi lựa chọn bao gồm:</p>
+            <p>Trong bối cảnh làm việc hiện đại, khả năng sử dụng các công cụ hợp tác trực tuyến là yếu tố then chốt quyết định hiệu quả của một dự án nhóm. Trong một tuần triển khai dự án nhỏ vừa qua, cá nhân tôi đã tham gia với vai trò <strong>Trưởng nhóm</strong>, chịu trách nhiệm chính về quản lý, đốc thúc thành viên làm việc, và kiểm duyệt nội dung toàn diện.</p>
+            <p>Báo cáo này tập trung vào việc phân tích trải nghiệm cá nhân, cách thức thiết lập và tối ưu hóa các công cụ kỹ thuật số để phục vụ mục tiêu chung của nhóm. Các công cụ chiến lược được tôi lựa chọn bao gồm:</p>
             <ul>
-                <li><strong>1. Microsoft Planner:</strong> Quản lý danh sách nhiệm vụ và tiến độ.</li>
-                <li><strong>2. Microsoft Teams:</strong> Giao tiếp tập trung và thảo luận nhóm.</li>
-                <li><strong>3. Google Docs:</strong> Soạn thảo tài liệu cộng tác thời gian thực.</li>
-                <li><strong>4. Google Drive:</strong> Hệ thống lưu trữ và phân phối tài nguyên.</li>
+                <li><strong>1. Microsoft Planner:</strong> Công cụ quản lý danh sách nhiệm vụ, thiết lập tiến độ và trực quan hóa luồng công việc.</li>
+                <li><strong>2. Microsoft Teams:</strong> Không gian giao tiếp tập trung, trao đổi và thảo luận nhóm chuyên sâu.</li>
+                <li><strong>3. Google Docs:</strong> Nền tảng soạn thảo văn bản và cộng tác nội dung theo thời gian thực.</li>
+                <li><strong>4. Google Drive:</strong> Hệ thống quản trị dữ liệu đám mây, lưu trữ và phân phối tài nguyên bài học.</li>
             </ul>
         </section>
 
@@ -98,19 +108,23 @@
             <h2>II. Thiết lập và Tối ưu hóa không gian làm việc cá nhân</h2>
             
             <h3>2.1. Định danh cá nhân chuyên nghiệp</h3>
-            <p>Để đảm bảo sự chuyên nghiệp, tôi đã thực hiện cập nhật đồng bộ Profile trên cả 4 nền tảng (gồm Tên đầy đủ). Việc này giúp các thành viên khác dễ dàng nhận diện và tag (gắn thẻ) tôi trong các cuộc thảo luận hoặc phân công nhiệm vụ, tránh nhầm lẫn giữa các tài khoản cá nhân khác.</p>
-            
-            <h3>2.2. Tối ưu hóa tính năng nâng cao</h3>
-            <p>Thay vì chỉ sử dụng các tính năng cơ bản, tôi đã thiết lập hệ thống <strong>Labels (Nhãn)</strong> trong Microsoft Planner để phân loại công việc theo mức độ ưu tiên:</p>
-            <ul>
-                <li><strong>Nhãn Đỏ:</strong> Công việc khẩn cấp (Urgent).</li>
-                <li><strong>Nhãn Vàng:</strong> Đang chờ phản hồi (Waiting).</li>
-                <li><strong>Nhãn Xanh:</strong> Công việc định kỳ (Routine).</li>
-            </ul>
-            <p>Ngoài ra, tôi đã thực hiện liên kết (Link) giữa các công cụ bằng cách gắn trực tiếp các liên kết của tệp Google Docs vào phần <strong>"Notes"</strong> hoặc <strong>"Attachments"</strong> của từng Task tương ứng trên Planner, giúp việc truy cập tài liệu chỉ mất một cú nhấp chuột.</p>
+            <p>Để xây dựng môi trường làm việc số chuẩn mực và minh bạch, tôi đã thực hiện cập nhật đồng bộ hồ sơ cá nhân (Profile bao gồm ảnh chân dung và họ tên đầy đủ) trên cả 4 nền tảng tương tác. Việc đồng nhất thông tin định danh này giúp các thành viên trong nhóm dễ dàng nhận diện và tag (gắn thẻ) trực tiếp tên tôi trong các phiên thảo luận hoặc phân định trách nhiệm công việc, tránh tối đa tình trạng nhầm lẫn với các tài khoản cá nhân ngoài học tập.</p>
             <div class="image-wrapper">
-                <img src="hinh_bai4_2.png" alt="Bảng Kanban Planner" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Kanban'">
-                <div class="image-caption">Ảnh minh chứng: Chụp màn hình bảng Planner có các thẻ Task được gắn nhãn màu sắc và đính kèm link tài liệu</div>
+                <img src="bai4_1.png" alt="Đồng bộ định danh cá nhân số" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Dinh+danh'">
+                <div class="image-caption">Hình 4.1: Đồng bộ hóa thông tin định danh cá nhân chuyên nghiệp trên hệ thống quản trị dự án</div>
+            </div>
+
+            <h3>2.2. Tối ưu hóa tính năng nâng cao</h3>
+            <p>Thay vì chỉ áp dụng các tính năng cơ bản, tôi đã chủ động thiết lập hệ thống phân loại thông minh qua cấu trúc <strong>Labels (Nhãn màu sắc)</strong> trong Microsoft Planner nhằm gom nhóm và quản trị công việc sát sao theo các cấp độ ưu tiên:</p>
+            <ul>
+                <li><strong>Nhãn Đỏ:</strong> Công việc khẩn cấp có thời hạn ngắn (Urgent).</li>
+                <li><strong>Nhãn Vàng:</strong> Các tác vụ đang bị nghẽn mạch hoặc chờ phản hồi từ thành viên (Waiting).</li>
+                <li><strong>Nhãn Xanh:</strong> Các đầu việc mang tính định kỳ và duy trì đều đặn (Routine).</li>
+            </ul>
+            <p>Bên cạnh đó, tôi thực hiện tối ưu hóa liên kết chéo cấu trúc dữ liệu bằng phương thức đính kèm trực tiếp đường dẫn của các tệp văn bản Google Docs vào phân mục <strong>"Notes"</strong> hoặc <strong>"Attachments"</strong> của từng thẻ Task tương ứng trên bảng Planner, hỗ trợ việc truy xuất tài nguyên số chỉ với một cú click chuột đơn giản.</p>
+            <div class="image-wrapper">
+                <img src="bai4_2.png" alt="Cấu hình hệ thống nhãn và liên kết" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Labels+Planner'">
+                <div class="image-caption">Hình 4.2: Thiết lập hệ thống nhãn màu phân cấp độ ưu tiên và tích hợp link tài liệu trên Planner</div>
             </div>
         </section>
 
@@ -119,100 +133,116 @@
             <h2>III. Quá trình thực hiện nhiệm vụ và Tương tác cá nhân</h2>
             
             <h3>3.1. Tự quản lý danh sách nhiệm vụ (Microsoft Planner)</h3>
-            <p>Tôi đã chủ động quản lý công việc của mình thông qua mô hình Kanban trên Planner. Trong suốt 1 tuần, tôi duy trì tần suất cập nhật tiến độ công việc ít nhất 3 lần mỗi tuần:</p>
+            <p>Tôi quản trị công việc độc lập của cá nhân thông qua mô hình Kanban trực quan trên Planner. Trong suốt tiến trình vận hành dự án kéo dài 1 tuần, tôi duy trì nghiêm ngặt tần suất cập nhật thực trạng công việc tối thiểu 3 lần mỗi tuần:</p>
             <ul>
-                <li>Khi bắt đầu nhiệm vụ, tôi chuyển Task từ cột "To-do" sang <strong>"In Progress"</strong>.</li>
-                <li>Tôi cập nhật phần trăm hoàn thành (% Complete) để nhóm trưởng (chính tôi và quản lý) dễ dàng theo dõi mà không cần hỏi lại.</li>
-                <li>Thiết lập <strong>Deadline</strong> (Hạn chót) rõ ràng cho từng tiểu mục nhỏ trong danh sách Checklist.</li>
+                <li>Ngay khi khởi động nhiệm vụ, tôi thực hiện chuyển trạng thái của thẻ Task từ phân mục "To-do" sang cột <strong>"In Progress"</strong>.</li>
+                <li>Liên tục điều chỉnh tỷ lệ phần trăm hoàn thành chỉ số công việc (% Complete) giúp các thành viên phối hợp dễ dàng theo dõi mà không cần thực hiện các cuộc hội thoại hỏi đáp thủ công.</li>
+                <li>Thiết lập mốc thời gian <strong>Deadline</strong> rõ ràng cho từng hạng mục công việc chi tiết nằm trong danh sách Checklist bổ trợ.</li>
             </ul>
+            <div class="image-wrapper">
+                <img src="bai4_3.png" alt="Cập nhật tiến độ Kanban cá nhân" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Kanban+Progress'">
+                <div class="image-caption">Hình 4.3: Theo dõi, cập nhật trạng thái "In Progress" và quản trị mốc thời gian cam kết trên Planner</div>
+            </div>
 
             <h3>3.2. Tương tác và đóng góp nội dung (Google Docs)</h3>
-            <p>Trên Google Docs, tôi không chỉ viết nội dung phần việc của mình mà còn tích cực đóng góp cho toàn bộ tài liệu bằng cách:</p>
+            <p>Trong không gian làm việc chung trên Google Docs, tôi không chỉ đảm trách viết nội dung cho phần việc của cá nhân mà còn chủ động đóng góp xây dựng hệ thống tài liệu chung bằng việc:</p>
             <ul>
-                <li>Sử dụng chế độ <strong>Suggesting (Đề xuất)</strong> thay vì Editing trực tiếp khi chỉnh sửa câu từ của bạn khác để họ dễ dàng xem xét.</li>
-                <li>Gửi các <strong>Comments (Bình luận)</strong> để góp ý hoặc đặt câu hỏi về các phần chưa rõ ràng trong quá trình soạn thảo chung.</li>
+                <li>Sử dụng tính năng <strong>Suggesting (Đề xuất)</strong> thay vì sửa đổi nội dung văn bản (Editing) trực tiếp nhằm lưu lại lịch sử câu từ, giúp các cộng sự dễ dàng đối soát, đánh giá trước khi đồng thuận thay đổi.</li>
+                <li>Tạo các luồng thảo luận qua tính năng <strong>Comments (Bình luận)</strong> để kịp thời góp ý mang tính xây dựng hoặc phản biện các luận điểm chưa rõ ràng trong quá trình biên soạn bài tập tập thể.</li>
             </ul>
+            <div class="image-wrapper">
+                <img src="bai4_4.png" alt="Tương tác thời gian thực trên Google Docs" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Google+Docs'">
+                <div class="image-caption">Hình 4.4: Sử dụng chế độ đề xuất văn bản và tạo luồng thảo luận tương tác trên Google Docs</div>
+            </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">蔵</div>
             <h2>IV. Quản lý tài nguyên và Tệp tin (Google Drive)</h2>
-            <p>Việc quản lý tài liệu được tôi thực hiện một cách khoa học để đảm bảo tính sẵn sàng và tránh thất lạc dữ liệu.</p>
+            <p>Hệ thống học liệu được thiết lập và phân bố một cách khoa học trên đám mây nhằm tối ưu hóa tính sẵn sàng cao của thông tin và ngăn ngừa rủi ro thất lạc tài nguyên dữ liệu.</p>
             
             <h3>4.1. Cấu trúc thư mục nhiều cấp</h3>
-            <p>Tôi đã xây dựng hệ thống thư mục trên Google Drive với cấu trúc tối thiểu 2 cấp:</p>
+            <p>Tôi đã quy hoạch không gian lưu trữ dự án trên Google Drive dưới dạng cấu trúc cây thư mục tối thiểu từ 2 cấp trở lên một cách tường minh:</p>
             <ul>
-                <li><strong>Thư mục cha:</strong> [Tên Dự Án] - Năm học</li>
-                <li><strong>Thư mục con 1:</strong> Tài liệu tham khảo (Link báo, file PDF...)</li>
-                <li><strong>Thư mục con 2:</strong> Bản nháp cá nhân (Dành riêng cho các nội dung tôi đang soạn thảo)</li>
-                <li><strong>Thư mục con 3:</strong> Sản phẩm hoàn thiện (Nơi lưu trữ các file đã qua kiểm duyệt)</li>
+                <li><strong>Thư mục gốc:</strong> <code>[VNU1001]_[Nhóm 14] - Bài tập Giữa kì (2026)</code></li>
+                <li><strong>Thư mục con cấp 1 - Tài liệu tham khảo:</strong> Nơi tập trung lưu trữ đường dẫn báo chí, tệp định dạng PDF và các tài liệu học thuật số thu thập được.</li>
+                <li><strong>Thư mục con cấp 1 - Bản nháp cá nhân:</strong> Không gian biên soạn độc lập của từng cá nhân trước khi trình duyệt.</li>
+                <li><strong>Thư mục con cấp 1 - Sản phẩm hoàn thiện:</strong> Kho lưu trữ tệp tin cuối cùng sau khi đã trải qua quy trình thẩm định nội dung của toàn nhóm.</li>
             </ul>
+            <div class="image-wrapper">
+                <img src="bai4_5.png" alt="Cấu trúc cây thư mục lưu trữ" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Thu+muc+Drive'">
+                <div class="image-caption">Hình 4.5: Sắp xếp hệ thống lưu trữ theo mô hình cây thư mục nhiều phân cấp khoa học trên Google Drive</div>
+            </div>
 
-            <h3>4.2. Quy tắc đặt tên và Phân quyền</h3>
-            <p>100% tệp tin do tôi tạo ra đều tuân thủ quy tắc đặt tên thống nhất: <code>[MãNhóm]_[Tên Tài Liệu]_[Họ Tên]_[Ngày Cập Nhật]</code>. Việc này giúp mọi người tìm kiếm file cực nhanh qua thanh Search.</p>
-            <p>Đồng thời, tôi thực hiện phân quyền truy cập (Share settings) chính xác:</p>
+            <h3>4.2. Quy tắc đặt tên và phân quyền truy cập</h3>
+            <p>100% tệp tin số do cá nhân tôi khởi tạo hoặc tải lên hệ thống lưu trữ đều tuân thủ chặt chẽ nguyên tắc định danh danh mục: <code>[MãNhóm]_[Tên Tài Liệu]_[Họ Tên]_[Ngày Cập Nhật]</code>. Phương pháp đặt tên nhất quán này hỗ trợ các thành viên định vị file cực kỳ nhanh chóng qua thanh công cụ tìm kiếm.</p>
+            <p>Đồng thời, tôi tiến hành cấu hình phân quyền truy cập dữ liệu (Share settings) chính xác theo vai trò làm việc:</p>
             <ul>
-                <li>Phân quyền <strong>"Editor"</strong> cho các thành viên trực tiếp làm cùng.</li>
-                <li>Phân quyền <strong>"Viewer"</strong> đối với các tài liệu lưu trữ để tránh việc xóa nhầm nội dung.</li>
+                <li>Thiết lập quyền <strong>"Editor" (Người chỉnh sửa)</strong> cho các thành viên cốt lõi cùng trực tiếp tham gia sản xuất nội dung.</li>
+                <li>Thiết lập quyền <strong>"Viewer" (Người xem)</strong> đối với các tệp hồ sơ lưu trữ, dữ liệu gốc nhằm ngăn ngừa tuyệt đối sự cố vô tình xóa nhầm dữ liệu quan trọng.</li>
             </ul>
+            <div class="image-wrapper">
+                <img src="bai4_6.png" alt="Quy tắc đặt tên và cấu hình quyền" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Phan+quyen+Drive'">
+                <div class="image-caption">Hình 4.6: Quản trị quy tắc đặt tên file đồng bộ và cấu hình phân tách quyền truy cập tệp tin dữ liệu</div>
+            </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">克</div>
             <h2>V. Phân tích Hiệu quả, Thách thức và Giải pháp</h2>
             
-            <h3>5.1. Đánh giá hiệu quả</h3>
-            <p>Sự kết hợp giữa bộ công cụ Microsoft và Google mang lại sự cân bằng giữa khả năng quản lý (Planner/Teams) và tính linh hoạt trong sáng tạo (Docs/Drive). Việc sử dụng các công cụ này giúp tôi <strong>tiết kiệm khoảng 30% thời gian hội họp</strong> so với cách làm việc truyền thống vì mọi thông tin đã được hiển thị minh bạch trên hệ thống.</p>
+            <h3>5.1. Đánh giá hiệu quả tổng quan</h3>
+            <p>Mô hình tích hợp nhịp nhàng giữa hệ sinh thái quản lý của Microsoft (Planner/Teams) và tính năng tối ưu sáng tạo nội dung của Google (Docs/Drive) mang đến sự minh bạch tuyệt đối về dòng chảy công việc. Giải pháp tổ chức phối hợp số này giúp cá nhân và tập thể <strong>tiết kiệm khoảng 30% quỹ thời gian hội họp trực tiếp</strong> do toàn bộ thông tin tiến độ, học liệu đã được hiển thị trực quan và cập nhật liên tục trên hệ thống.</p>
             
-            <h3>5.2. Ba thách thức lớn và giải pháp cá nhân</h3>
+            <h3>5.2. Ba thách thức lớn và giải pháp khắc phục thực tế</h3>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>STT</th>
-                            <th>Thách thức gặp phải</th>
-                            <th>Giải pháp cá nhân đã thực hiện</th>
-                            <th>Hiệu quả sau giải quyết</th>
+                            <th style="width: 8%">STT</th>
+                            <th style="width: 32%">Thách thức gặp phải</th>
+                            <th style="width: 35%">Giải pháp cá nhân đã thực hiện</th>
+                            <th style="width: 25%">Hiệu quả sau giải quyết</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><strong>Quá tải thông tin trên Teams:</strong> Các cuộc thảo luận diễn ra liên tục khiến tôi dễ bỏ lỡ các thông báo quan trọng về Task.</td>
-                            <td>Tôi đã sử dụng tính năng <strong>"Pin" (Ghim)</strong> các Channel quan trọng nhất lên đầu và bật thông báo <strong>"Mentions only"</strong> để tập trung vào những việc trực tiếp gọi tên mình.</td>
-                            <td>Giảm 50% thời gian lọc tin nhắn rác, không còn bỏ sót deadline quan trọng.</td>
+                            <td><strong>Quá tải luồng thông tin trên Microsoft Teams:</strong> Các hội thoại trao đổi liên tục xuất hiện khiến tôi có nguy cơ bỏ sót các thông báo trọng yếu liên quan đến Task.</td>
+                            <td>Áp dụng tính năng <strong>"Pin" (Ghim)</strong> các kênh làm việc chủ chốt lên vị trí hàng đầu của bảng điều khiển; đồng thời cấu hình bộ lọc thông báo sang chế độ <strong>"Mentions only"</strong> để tập trung xử lý nhanh các đầu việc chỉ đích danh bản thân.</td>
+                            <td>Giảm thiểu 50% thời gian phân loại tin nhắn nhiễu; kiểm soát tốt các mốc hạn chót quan trọng.</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><strong>Xung đột nội dung trên Docs:</strong> Đôi khi nhiều thành viên cùng sửa một đoạn văn bản khiến nội dung bị chồng chéo hoặc mất dữ liệu.</td>
-                            <td>Tôi đã chủ động quy định việc phân chia vùng làm việc ngay đầu tài liệu. Sử dụng chế độ <strong>Suggesting</strong> thay vì Editing trực tiếp khi muốn thay đổi ý của người khác.</td>
-                            <td>Tài liệu có sự nhất quán cao, không còn hiện tượng mất dữ liệu và các thành viên cảm thấy được tôn trọng.</td>
+                            <td><strong>Xung đột chỉnh sửa dữ liệu trên Google Docs:</strong> Tình trạng nhiều nhân sự cùng đồng thời can thiệp sửa đổi cấu trúc câu chữ trong một phân đoạn dẫn đến chồng chéo, mất mát nội dung bài viết.</td>
+                            <td>Chủ động thiết lập bảng phân chia khu vực tác nghiệp cụ thể ngay trang đầu tài liệu. Yêu cầu toàn nhóm chuyển đổi linh hoạt sang chế độ <strong>Suggesting (Đề xuất)</strong> thay cho việc sửa đổi trực tiếp khi muốn điều chỉnh ý tưởng của cộng sự.</td>
+                            <td>Nội dung văn bản đạt tính nhất quán cao, chấm dứt hoàn toàn lỗi ghi đè dữ liệu; gia tăng sự tôn trọng lẫn nhau giữa các thành viên.</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><strong>Đồng bộ hóa dữ liệu giữa Microsoft & Google:</strong> Việc file nằm trên Drive nhưng trao đổi trên Teams/Planner gây khó khăn khi tìm kiếm nhanh.</td>
-                            <td>Tôi thiết lập một <strong>"Resource Map"</strong> (Bản đồ tài nguyên) là một file Docs nhỏ ghi danh sách các liên kết Drive quan trọng, sau đó Ghim file này vào Tab trên Teams.</td>
-                            <td>Mọi thành viên chỉ cần 2 giây để tìm thấy bất kỳ file nào mà không cần thoát khỏi Teams.</td>
+                            <td><strong>Sự bất đồng bộ hạ tầng giữa Microsoft và Google:</strong> Việc phân tách lưu trữ tệp tin bên Google Drive nhưng hội thoại giao tiếp trên Teams gây cản trở lớn cho công tác tra cứu nhanh.</td>
+                            <td>Khởi tạo một tệp Docs mang vai trò <strong>"Resource Map" (Bản đồ tài nguyên số)</strong> tổng hợp đầy đủ sơ đồ liên kết của các thư mục Drive quan trọng, sau đó tiến hành tích hợp và Ghim cố định file này thành một Tab độc lập trên thanh công cụ của kênh Teams.</td>
+                            <td>Toàn bộ thành viên chỉ mất từ 2 đến 3 giây để định vị nhanh bất kỳ tệp dữ liệu nào mà không phải rời khỏi không gian làm việc của Teams.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="image-wrapper">
-                <img src="hinh_bai4_7.png" alt="Ghim tin nhắn Teams" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Ghim+Teams'">
-                <div class="image-caption">Ảnh minh chứng: Chụp màn hình tin nhắn đã Ghim (Pinned) trên Teams</div>
+                <img src="bai4_7.png" alt="Ứng dụng tính năng Ghim trên Teams" onerror="this.src='https://via.placeholder.com/800x450.png?text=Minh+chung+Pin+Teams'">
+                <div class="image-caption">Hình 4.7: Ứng dụng giải pháp Ghim tin nhắn trọng tâm và đính kèm Resource Map điều hướng dữ liệu trên Microsoft Teams</div>
             </div>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">結</div>
             <h2>VI. Kết luận</h2>
-            <p>Việc làm chủ các công cụ hợp tác trực tuyến không chỉ đơn thuần là biết cách sử dụng các nút chức năng, mà còn là <strong>tư duy tổ chức công việc</strong> và khả năng tương tác tích cực với đồng đội trong không gian số. Thông qua dự án này, tôi đã:</p>
+            <p>Việc làm chủ và tối ưu hóa năng lực vận hành các công cụ hợp tác trực tuyến không đơn thuần dừng lại ở việc thành thạo cách sử dụng các tính năng kỹ thuật, mà điều cốt lõi nằm ở <strong>tư duy thiết kế, tổ chức tiến trình công việc khoa học</strong> cùng khả năng tương tác tích cực, văn minh với đồng đội trong không gian số. Thông qua dự án thực hành thực tế này, tôi đã rút ra các giá trị năng lực cốt lõi:</p>
             <ul>
-                <li>Thành thạo việc điều phối cá nhân qua Microsoft Planner.</li>
-                <li>Xây dựng được thói quen quản lý dữ liệu khoa học trên Google Drive.</li>
-                <li>Cải thiện kỹ năng giao tiếp trực tuyến chuyên nghiệp.</li>
+                <li>Làm chủ kỹ năng điều phối, phân rã công việc khoa học qua mô hình quản lý Microsoft Planner.</li>
+                <li>Xây dựng vững chắc tư duy quản lý dữ liệu số có hệ thống và logic trên Google Drive.</li>
+                <li>Nâng cấp kỹ thuật giao tiếp trực tuyến chuyên nghiệp, hiệu quả trong môi trường số hóa liên tục.</li>
             </ul>
-            <p>Đây là những nền tảng quan trọng giúp tôi sẵn sàng cho môi trường làm việc thực tế sau này.</p>
+            <p>Những trải nghiệm thực tế quý báu này chính là bệ phóng năng lực số vững chắc giúp tôi sẵn sàng thích ứng tốt với môi trường làm việc cộng tác đa quốc gia trong tương lai.</p>
         </section>
     </div>
     <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>

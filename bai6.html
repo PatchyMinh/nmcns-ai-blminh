@@ -29,88 +29,220 @@
         .report-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--primary); }
         .report-header h1 { color: var(--dark); font-size: 1.8rem; line-height: 1.3; margin-bottom: 1.5rem; }
         .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.95rem; }
+        .meta-item strong { color: var(--slate); }
+        
         .content-section { background: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 2.5rem; position: relative; }
         .kanji-bg { position: absolute; bottom: 1rem; right: 1rem; font-size: 8rem; font-weight: 900; color: rgba(158, 42, 43, 0.05); line-height: 1; user-select: none; pointer-events: none; z-index: 0; }
         h2 { color: var(--dark); font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem; position: relative; z-index: 1; }
-        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; }
-        p, ul, ol { position: relative; z-index: 1; }
+        h3 { color: #1e293b; font-size: 1.15rem; margin: 1.5rem 0 0.5rem 0; border-bottom: 1px dashed var(--border); padding-bottom: 0.25rem; }
+        p, ul, ol, .table-container { position: relative; z-index: 1; }
         p { margin-bottom: 1.2rem; text-align: justify; }
+        
         .prompt-container { background-color: #f8fafc; border-left: 4px solid #0284c7; padding: 1.25rem; margin: 1.5rem 0; border-radius: 8px; }
         .prompt-title { font-weight: 700; color: #0369a1; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .prompt-content { font-style: italic; color: #334155; }
+        
+        .image-gallery { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .image-item { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #f8fafc; text-align: center; padding: 0.5rem; }
+        .image-item img { max-width: 100%; height: auto; border-radius: 4px; }
+        .image-caption { font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem; font-style: italic; }
+
+        .table-container { width: 100%; overflow-x: auto; margin: 1.5rem 0; }
+        .styled-table { border-collapse: collapse; font-size: 0.95rem; min-width: 100%; box-shadow: 0 0 20px rgba(0, 0, 0, 0.01); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+        .styled-table th, .styled-table td { padding: 12px 15px; text-align: left; vertical-align: top; }
+        .styled-table thead tr { background-color: var(--primary); color: white; text-align: left; font-weight: bold; }
+        .styled-table tbody tr { border-bottom: 1px solid var(--border); }
+        .styled-table tbody tr:nth-of-type(even) { background-color: #f8fafc; }
+        .styled-table tbody tr:last-of-type { border-bottom: 2px solid var(--primary); }
+
         .rules-list { list-style: none; padding-left: 0; }
-        .rules-list li { position: relative; padding-left: 2rem; margin-bottom: 1rem; }
+        .rules-list li { position: relative; padding-left: 2rem; margin-bottom: 1rem; text-align: justify; }
         .rules-list li::before { content: "✓"; position: absolute; left: 0; top: 2px; width: 1.25rem; height: 1.25rem; background-color: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; }
+        
         .infographic-container { text-align: center; margin: 2rem 0; }
-        .infographic-container img { max-width: 100%; border-radius: 16px; border: 1px solid var(--border); }
+        .infographic-container img { max-width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        
         footer { text-align: center; padding: 2.5rem; color: var(--slate); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 4rem; }
         @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 0.75rem; }
-            .nav-links a { margin: 0 0.5rem; }
             .container { margin: 1.5rem auto; }
-            .report-header, .content-section { padding: 1.75rem; }
+            .report-header, .content-section { padding: 1.5rem; }
+            .navbar { padding: 1rem; }
         }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <a href="index.html" class="nav-logo">書 PORTFOLIO</a>
+        <a href="#" class="nav-logo">PORTFOLIO</a>
         <div class="nav-links">
-            <a href="index.html">己 紹介</a><a href="bai1.html">整 1</a><a href="bai2.html">索 2</a>
-            <a href="bai3.html">問 3</a><a href="bai4.html">協 4</a><a href="bai5.html">創 5</a>
-            <a href="bai6.html" class="active">正 6</a><a href="tongket.html">省 総括</a>
+            <a href="bai5.html">Bài 5</a>
+            <a href="bai6.html" class="active">Bài 6</a>
         </div>
     </nav>
+
     <div class="container">
         <header class="report-header">
             <h1>BÁO CÁO: PHÁT TRIỂN KỸ NĂNG SỬ DỤNG AI CÓ TRÁCH NHIỆM VÀ ĐẠO ĐỨC TRONG HỌC TẬP</h1>
             <div class="meta-grid">
-                <div><span>Người thực hiện:</span> Bùi Lê Minh</div><div><span>MSSV:</span> 25021868</div>
-                <div><span>Lớp:</span> K70I-CS4</div><div><span>Mã HP:</span> VNU1001_E252012</div>
+                <div class="meta-item"><strong>Người thực hiện:</strong> Bùi Lê Minh</div>
+                <div class="meta-item"><strong>MSSV:</strong> 25021868</div>
+                <div class="meta-item"><strong>Lớp:</strong> K70I-CS4</div>
+                <div class="meta-item"><strong>Mã học phần:</strong> VNU1001_E252012</div>
+                <div class="meta-item" style="grid-column: span 2;"><strong>Đơn vị:</strong> Khoa Công nghệ Thông tin - Trường Đại học Công nghệ (UET)</div>
             </div>
         </header>
 
         <section class="content-section">
-            <div class="kanji-bg">正</div>
-            <h2>I. 正 — Nghiên cứu chính sách của ĐHQGHN & UET về AI</h2>
-            <p>ĐHQGHN đưa học phần VNU1001 vào chương trình bắt buộc. UET quy định: <strong>minh bạch</strong> (khai báo hỗ trợ AI), <strong>trách nhiệm nội dung</strong> (người học chịu trách nhiệm về tính chính xác), <strong>liêm chính</strong> (nghiêm cấm copy-paste kết quả AI không hiểu bản chất).</p>
+            <div class="kanji-bg">政</div>
+            <h2>Phần I: Nghiên cứu chính sách của ĐHQGHN & UET về AI</h2>
+            
+            <h3>1.1. Bối cảnh triển khai AI tại ĐHQGHN (VNU)</h3>
+            <p>Trong giai đoạn 2024-2026, Đại học Quốc gia Hà Nội đã xác định trí tuệ nhân tạo là công cụ chiến lược để nâng cao chất lượng đào tạo[cite: 2]. Theo thông tin từ cổng thông tin vnu.edu.vn, VNU đã tiên phong đưa học phần "Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo" (VNU1001) vào chương trình bắt buộc[cite: 3]. Điều này cho thấy thái độ cởi mở nhưng thận trọng của nhà trường: Không cấm đoán, nhưng yêu cầu có kiểm soát[cite: 4].</p>
+            
+            <h3>1.2. Chính sách cụ thể tại Trường Đại học Công nghệ (UET)</h3>
+            <p>Đối với một đơn vị trọng điểm về kỹ thuật như UET, các quy định về AI thường được lồng ghép trong quy chế đào tạo và liêm chính học thuật[cite: 5]:</p>
+            <ul class="rules-list" style="margin-bottom: 1.2rem;">
+                <li><strong>Nguyên tắc minh bạch:</strong> Sinh viên được phép sử dụng AI như một công cụ hỗ trợ tìm kiếm tài liệu, giải thích thuật toán hoặc gợi ý cấu trúc code[cite: 5]. Tuy nhiên, việc sử dụng phải được khai báo rõ ràng trong danh mục tài liệu tham khảo hoặc ghi chú chân trang (footnote)[cite: 6].</li>
+                <li><strong>Trách nhiệm nội dung:</strong> Quy định của nhà trường nhấn mạnh: <em>"Người học là thực thể duy nhất chịu trách nhiệm về tính chính xác và nguyên bản của sản phẩm nộp về"</em>[cite: 7]. Điều này có nghĩa là mọi sai sót hoặc "ảo giác AI" (hallucination) trong bài làm đều tính là lỗi của sinh viên[cite: 8].</li>
+                <li><strong>Liêm chính trong kiểm tra, đánh giá:</strong> UET nghiêm cấm việc sử dụng AI trực tiếp để tạo ra sản phẩm cuối cùng mà không có sự tham gia của tư duy cá nhân (như copy-paste mã nguồn AI cho các bài tập thực hành hệ điều hành, cấu trúc dữ liệu... mà không hiểu bản chất)[cite: 9].</li>
+            </ul>
+
+            <h3>1.3. Nhận định cá nhân về tính tương thích của chính sách</h3>
+            <p>Chính sách hiện tại của VNU và UET rất phù hợp với định hướng phát triển của một sinh viên Công nghệ Thông tin[cite: 10]:</p>
+            <ul class="rules-list">
+                <li><strong>Khuyến khích sáng tạo:</strong> Tạo điều kiện để sinh viên tiếp cận sớm với các công nghệ mới nhất (như LLMs)[cite: 10].</li>
+                <li><strong>Bảo vệ giá trị học thuật:</strong> Đảm bảo bằng cấp của sinh viên UET giữ được giá trị thực chất, không bị "lạm phát" bởi các nội dung AI thuần túy[cite: 11].</li>
+                <li><strong>Chuẩn bị cho sự nghiệp:</strong> Việc tuân thủ đạo đức AI ngay từ năm nhất giúp sinh viên hình thành tư duy đạo đức nghề nghiệp, đặc biệt quan trọng trong các mảng nhạy cảm như An toàn thông tin[cite: 12].</li>
+            </ul>
         </section>
 
         <section class="content-section">
-            <div class="kanji-bg">実</div>
-            <h2>II. Thực thi nhiệm vụ với sự hỗ trợ của AI</h2>
-            <div class="prompt-container"><div class="prompt-title">📌 Prompt 1 (Khởi tạo)</div>"Tôi là sinh viên năm nhất CNTT tại UET. Lập dàn ý chi tiết về 'Máy tính và thiết bị ngoại vi'."</div>
-            <div class="prompt-container"><div class="prompt-title">📌 Prompt 2 (Chi tiết hóa)</div>"Viết chi tiết phần thiết bị ngoại vi: chức năng, thông số kỹ thuật (DPI, Refresh Rate...), xu hướng mới."</div>
-            <div class="prompt-container"><div class="prompt-title">📌 Prompt 3 (Định dạng)</div>"Tổng hợp vào bảng Markdown: Tên thiết bị, Phân loại, Thông số, Lưu ý."</div>
-            <p><strong>Kết quả & chỉnh sửa:</strong> AI cung cấp thông số chuyên sâu. Tôi phát hiện chuẩn VGA cũ → thay bằng HDMI 2.1, DisplayPort 1.4. Toàn bộ nội dung được kiểm chứng thủ công.</p>
+            <div class="kanji-bg">令</div>
+            <h2>Phần II: Thực thi nhiệm vụ học tập với sự hỗ trợ của AI</h2>
+            
+            <h3>2.1. Prompt 1: Thu thập dàn ý (Giai đoạn khởi tạo)</h3>
+            <div class="prompt-container">
+                <div class="prompt-title">Nội dung Prompt</div>
+                <div class="prompt-content">"Tôi là sinh viên năm nhất ngành CNTT tại UET. Hãy lập cho tôi một dàn ý chi tiết để tổng hợp tài liệu về chủ đề 'Máy tính và các thiết bị ngoại vi'. Dàn ý cần bao gồm: Kiến trúc máy tính cơ bản, các loại thiết bị nhập, thiết bị xuất, và các chuẩn kết nối hiện đại." [cite: 14]</div>
+            </div>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="hinh_bai6_prompt1.png" alt="Quá trình tương tác Prompt lần 1" onerror="this.src='https://via.placeholder.com/800x450.png?text=Hinh+2.1+Prompt+1'">
+                    <div class="image-caption">Hình 2.1: Quá trình tương tác Prompt lần 1 [cite: 15]</div>
+                </div>
+            </div>
+
+            <h3>2.2. Prompt 2: Đào sâu chuyên môn (Giai đoạn chi tiết hóa)</h3>
+            <div class="prompt-container">
+                <div class="prompt-title">Nội dung Prompt</div>
+                <div class="prompt-content">"Dựa trên dàn ý trên, hãy viết chi tiết phần 'Thiết bị ngoại vi'. Với mỗi thiết bị (như chuột, bàn phím, màn hình, máy in), hãy nêu rõ:<br>- Chức năng chính.<br>- Các thông số kỹ thuật quan trọng cần lưu ý khi chọn mua (ví dụ: DPI, Refresh Rate, Panel type, chuẩn kết nối).<br>- Xuuyên hướng công nghệ mới nhất hiện nay (ví dụ: kết nối không dây độ trễ thấp, màn hình OLED/Mini-LED)." [cite: 16]</div>
+            </div>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="hinh_bai6_prompt2.png" alt="Quá trình tương tác Prompt lần 2" onerror="this.src='https://via.placeholder.com/800x450.png?text=Hinh+2.2+Prompt+2'">
+                    <div class="image-caption">Hình 2.2: Quá trình tương tác Prompt lần 2 [cite: 17]</div>
+                </div>
+            </div>
+
+            <h3>2.3. Prompt 3: Kiểm tra và định dạng (Giai đoạn hoàn thiện)</h3>
+            <div class="prompt-container">
+                <div class="prompt-title">Nội dung Prompt</div>
+                <div class="prompt-content">"Hãy tổng hợp lại toàn bộ thông tin về các thiết bị ngoại vi đã nêu ở trên vào một bảng so sánh. Bảng gồm các cột: Tên thiết bị, Phân loại (Nhập/Xuất/Lưu trữ), Thông số quan trọng, và Lưu ý khi sử dụng. Trình bày bằng định dạng Markdown chuyên nghiệp." [cite: 18]</div>
+            </div>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="hinh_bai6_prompt3.png" alt="Quá trình tương tác Prompt lần 3" onerror="this.src='https://via.placeholder.com/800x450.png?text=Hinh+2.3+Prompt+3'">
+                    <div class="image-caption">Hình 2.3: Quá trình tương tác Prompt lần 3 [cite: 19]</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Tên thiết bị</th>
+                            <th>Phân loại</th>
+                            <th>Thông số quan trọng</th>
+                            <th>Lưu ý khi sử dụng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bàn phím</strong></td>
+                            <td>Nhập</td>
+                            <td>Loại Switch (Cơ/Quang), Layout, Key Rollover (NKRO), Polling Rate.</td>
+                            <td>Chọn switch phù hợp với môi trường (tránh dùng Blue Switch tại văn phòng/thư viện vì tiếng ồn lớn).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chuột</strong></td>
+                            <td>Nhập</td>
+                            <td>DPI (Độ nhạy), IPS (Tốc độ theo dõi), Trọng lượng (gram), Loại cảm biến.</td>
+                            <td>Vệ sinh mắt đọc thường xuyên; sử dụng tấm lót chuột (mousepad) chất lượng ổn định.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Màn hình</strong></td>
+                            <td>Xuất</td>
+                            <td>Kích thước, Độ phân giải, Tần số quét (Refresh Rate), Loại tấm nền (OLED/Mini-LED/IPS), Chuẩn kết nối hiện đại.</td>
+                            <td>Cân chỉnh màu sắc định kỳ nếu làm đồ họa; chú ý hiện tượng burn-in hoen ố nếu dùng màn hình OLED.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Máy in</strong></td>
+                            <td>Xuất</td>
+                            <td>Tốc độ in (PPM), Độ phân giải (DPI), Chuẩn kết nối (Wi-Fi/USB), Loại mực.</td>
+                            <td>Sử dụng giấy đúng định lượng quy định, bảo dưỡng linh kiện trống in định kỳ để tránh kẹt giấy.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>2.4. Kết quả</h3>
+            <p><strong>Đánh giá đầu ra của AI:</strong> Ở Prompt 1, AI đưa ra kiến thức khá tổng quát[cite: 20]. Đến Prompt 2, khi tôi yêu cầu cụ thể về thông số kỹ thuật, AI đã cung cấp các thuật ngữ chuyên sâu như DPI hay IPS, giúp tài liệu mang tính học thuật hơn[cite: 21].</p>
+            <p><strong>Chỉnh sửa và tích hợp:</strong> Tôi đã phát hiện AI liệt kê một số chuẩn kết nối cũ (như VGA)[cite: 22]. Tôi đã chủ động lược bỏ và thay thế bằng các chuẩn hiện đại như HDMI 2.1 và DisplayPort 1.4 để phù hợp với thực tế công nghệ năm 2026[cite: 23].</p>
+            <p><strong>Trích dẫn minh bạch:</strong> Tài liệu được tổng hợp với sự hỗ trợ của AI (Gemini) trong việc hệ thống hóa kiến thức và tra cứu thông số[cite: 23]. Nội dung đã được kiểm chứng và biên tập lại bởi sinh viên[cite: 24].</p>
         </section>
 
         <section class="content-section">
-            <div class="kanji-bg">倫</div>
-            <h2>III. Phân tích vấn đề đạo đức học thuật</h2>
-            <p><strong>Ranh giới hỗ trợ hợp lý – gian lận:</strong> Hỗ trợ = AI giải thích, gợi ý; Gian lận = yêu cầu AI làm toàn bộ bài tập và nộp mà không hiểu.</p>
-            <p><strong>Quyền sở hữu trí tuệ:</strong> Không trích dẫn AI có thể bị coi là đạo văn kỹ thuật số. Cần phân định rõ phần "ý tưởng của máy" và "sáng tạo của người".</p>
-            <p><strong>Tác động đến học tập:</strong> AI giúp tiếp cận công nghệ mới nhanh, nhưng lệ thuộc quá mức sẽ mất khả năng giải quyết vấn đề độc lập.</p>
+            <div class="kanji-bg">徳</div>
+            <h2>Phần III: Phân tích các vấn đề đạo đức học thuật</h2>
+            
+            <h3>3.1. Ranh giới giữa hỗ trợ hợp lý và gian lận học thuật</h3>
+            <p>Trong môi trường đại học, đặc biệt là tại UET, ranh giới này nằm ở <strong>tư duy chủ động</strong>[cite: 26].</p>
+            <p><strong>Hỗ trợ hợp lý:</strong> Sử dụng AI để giải thích một đoạn code khó, gợi ý cấu trúc bài viết hoặc sửa lỗi chính tả/ngữ pháp[cite: 27]. Ở đây, sinh viên vẫn là người làm chủ nội dung[cite: 28].</p>
+            <p><strong>Gian lận:</strong> Yêu cầu AI làm toàn bộ bài tập và nộp kết quả đó mà không hiểu nội dung bên trong[cite: 29]. Điều này triệt tiêu khả năng tự học và vi phạm nghiêm trọng liêm chính học thuật[cite: 30].</p>
+            
+            <h3>3.2. Vấn đề về quyền sở hữu trí tuệ và trích dẫn</h3>
+            <p>AI tạo ra nội dung dựa trên việc tổng hợp hàng tỷ dữ liệu từ internet, điều này dẫn đến nguy cơ xâm phạm bản quyền nếu không cẩn thận[cite: 31]. Việc trích dẫn AI không chỉ là để báo cáo công cụ, mà còn là cách để khẳng định phần nào là "ý tưởng của máy" và phần nào là "sáng tạo của người"[cite: 32]. Tại UET, việc không trích dẫn nguồn hỗ trợ từ AI có thể bị coi là hành vi đạo văn kỹ thuật số[cite: 33].</p>
+            
+            <h3>3.3. Tác động đến quá trình học tập và phát triển kỹ năng</h3>
+            <p><strong>Tích cực:</strong> AI giúp sinh viên IT nhanh chóng tiếp cận công nghệ mới, giảm bớt các công việc lặp đi lặp lại để tập trung vào tư duy thuật toán cao cấp[cite: 34].</p>
+            <p><strong>Tiêu cực:</strong> Nếu quá lệ thuộc, sinh viên sẽ mất đi khả năng giải quyết vấn đề độc lập (problem-solving) và kỹ năng tra cứu tài liệu truyền thống[cite: 35]. Khi đối mặt với các kỳ thi trực tiếp không có AI, sinh viên sẽ dễ dàng rơi vào trạng thái mất phương hướng[cite: 36].</p>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">則</div>
-            <h2>IV. Bộ nguyên tắc cá nhân (6 điều)</h2>
+            <h2>Phần IV: Bộ nguyên tắc cá nhân (6 điều)</h2>
             <ul class="rules-list">
-                <li><strong>Minh bạch tuyệt đối:</strong> Khai báo mọi hỗ trợ AI trong bài nộp.</li>
-                <li><strong>Kiểm chứng kép:</strong> Đối chiếu dữ liệu AI với nguồn tin cậy.</li>
-                <li><strong>Công cụ, không phải thay thế:</strong> Không dùng AI làm thay bài tập về nhà.</li>
-                <li><strong>Bảo mật dữ liệu:</strong> Không đưa thông tin cá nhân/mã nguồn quan trọng lên AI công cộng.</li>
-                <li><strong>Tư duy phản biện:</strong> Đặt câu hỏi ngược với câu trả lời của AI để tránh hallucination.</li>
-                <li><strong>Cập nhật liên tục:</strong> Theo dõi quy định mới của nhà trường về công nghệ.</li>
+                <li><strong>Minh bạch tuyệt đối:</strong> Luôn khai báo các phần có sự hỗ trợ của AI trong mọi bài nộp[cite: 37].</li>
+                <li><strong>Kiểm chứng kép:</strong> Mọi dữ liệu, thông số kỹ thuật hoặc đoạn mã do AI cung cấp đều phải được kiểm tra lại ít nhất từ một nguồn tin cậy khác[cite: 38].</li>
+                <li><strong>Công cụ, không phải thay thế:</strong> Chỉ dùng AI để gợi ý ý tưởng hoặc tối ưu hóa quy trình, tuyệt đối không dùng AI để làm thay bài tập về nhà[cite: 39].</li>
+                <li><strong>Bảo mật dữ liệu:</strong> Không đưa các thông tin cá nhân, tài khoản hoặc mã nguồn quan trọng của dự án nhóm lên các mô hình AI công cộng[cite: 40].</li>
+                <li><strong>Tư duy phản biện:</strong> Luôn đặt câu hỏi ngược lại với các câu trả lời của AI để tránh bị dẫn dắt bởi thông tin sai lệch[cite: 41].</li>
+                <li><strong>Cập nhật liên tục:</strong> Theo sát các thông báo mới nhất từ website trường và sổ tay sinh viên về quy định sử dụng công nghệ mới[cite: 42].</li>
             </ul>
         </section>
 
         <section class="content-section">
             <div class="kanji-bg">画</div>
-            <h2>V. Infographic "Sử dụng AI có trách nhiệm trong học thuật"</h2>
-            <div class="infographic-container"><img src="infographic.png" alt="Infographic" onerror="this.src='https://via.placeholder.com/800x1000.png'"></div>
+            <h2>Phần V: Infographic "Sử dụng AI có trách nhiệm trong học thuật"</h2>
+            <div class="infographic-container">
+                <img src="infographic.png" alt="Infographic Sử dụng AI có trách nhiệm trong học thuật" onerror="this.src='https://via.placeholder.com/800x1000.png?text=Infographic+S%E1%BB%AD+d%E1%BB%A5ng+AI+c%C3%B3+tr%C3%A1ch+nhi%E1%BB%87m'">
+            </div>
         </section>
     </div>
-    <footer>© 2026 Bùi Lê Minh (25021868) — Portfolio Năng lực số | Tinh thần Kaizen kiên định</footer>
+
+    <footer>
+        © 2026 Bùi Lê Minh (25021868) - Khoa CNTT, Trường Đại học Công nghệ (UET). Tất cả các quyền được bảo lưu.
+    </footer>
+
 </body>
 </html>
